@@ -12,12 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
-require('./routes/html-routes.js')(app);
+require('./controller/html-routes.js')(app);
+require('./controller/api-routes.js')(app);
 
-//Run `sequelize init:config &sequelize init:model` in npm
-//in server.js
 
-//insert app.list into
+
 db.sequelize.sync().then(function() {
 app.listen(PORT, function () {
 console.log(`'Server listening at http://localhost' ${PORT}`)
