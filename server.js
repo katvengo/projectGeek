@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 require('./controller/html-routes.js')(app);
-require('./controller/api-routes.js')(app);
+// require('./controller/api-routes.js')(app);
 
 
 
@@ -22,4 +22,6 @@ app.listen(PORT, function () {
 console.log(`'Server listening at http://localhost' ${PORT}`)
 })
 });
+
+
 
