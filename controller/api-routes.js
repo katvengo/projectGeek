@@ -1,5 +1,5 @@
 var db = require("../models");
-// var passport = require("../config/passport");
+var passport = require("../config/passport");
 
 
 module.exports = function (app) {
@@ -19,6 +19,32 @@ module.exports = function (app) {
             res.json(err);
             // res.status(422).json(err.errors[0].message);
         });
+    });
+
+    app.post("/api/login", function (req, res) {
+        let userEmail = req.body.email;
+        let userPassword = req.body.password;
+        console.log(userEmail);
+        console.log(userPassword);
+        if (userEmail && userPassword) {
+            db.User.findOne({
+                where: {
+                    email: userEmail
+                }
+            }).then(function (dbUser) {
+                console.log('After find one ' + dbUser);
+                if (dbUser.validPassword(userPassword)) {
+                    res.json(dbUser);
+                } else {
+                    res.send('Invalid username or password');
+                }
+            }).catch(function (err) {
+                console.log('On find one error ' + err);
+                res.send('Not correct username or password');
+            })
+        } else {
+            res.send('Please enter username and password');
+        }
     });
 
 
