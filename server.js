@@ -3,6 +3,8 @@ var session = require("express-session");
 
 var passport = require("./config/passport");
 
+var flash = require('connect-flash');
+
 var db = require('./models');
 
 var PORT = process.env.PORT || 8080
@@ -18,7 +20,11 @@ app.use(express.json());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(flash());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
 
 require('./controller/html-routes.js')(app);
 require('./controller/api-routes.js')(app);

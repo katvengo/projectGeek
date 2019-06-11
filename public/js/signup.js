@@ -21,8 +21,47 @@ $(document).ready(function () {
         };
 
         if (!userData.email || !userData.password) {
-            return;
+         alert("Please fill in all the required forms")  
+             return false;
+        } 
+
+    
+        //Validate Age
+        var x, text;
+        //Validate name
+        var a, alertName
+        // Get the value of the input field with id="numb"
+        x = document.getElementById("age-input").value;
+
+        // If x is Not a Number or less than one or greater than 10
+        if (isNaN(x) || x < 12) {
+            text = "Members must be 13 years of age or older";
         }
+        alert(text)
+
+        var a = document.getElementById("name-input").value; 
+        if (a === "") {
+            alert = "Name must be filled out";
+            alert(alertName)
+        }
+
+        var b = document.getElementById("username-input").value; 
+        if (b === "") {
+            alert("User name must be filled out");
+            return false;
+        }
+        var c = document.getElementById("email-input").value; 
+        if (c === "") {
+            alert("Email must be filled out");
+            return false;
+        }
+        var d = document.getElementById("password-input").value; 
+        if (d === "") {
+            alert("Password must be filled out");
+            return false;
+        }
+
+
         // If we have an email and password, run the signUpUser function
         signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile);
         nameInput.val("");
@@ -38,22 +77,24 @@ $(document).ready(function () {
     // Otherwise we log any errors
     function signUpUser(name, username, email, password, age, profile) {
         $.post("/api/signup", {
-            name: name,
-            username: username,
-            email: email,
-            password: password,
-            age: age,
-            profile: profile
-        })
-        .then(function (data) {
-            window.location.replace(data);
-            console.log(data)
-            // If there's an error, handle it by throwing up a bootstrap alert
-        }).catch(handleLoginErr);
+                name: name,
+                username: username,
+                email: email,
+                password: password,
+                age: age,
+                profile: profile
+            })
+            .then(function (data) {
+                window.location.replace(data);
+                console.log("name" + name + "password"+ password)
+                // If there's an error, handle it by throwing up a bootstrap alert
+            }).catch(handleLoginErr);
+            
     }
 
     function handleLoginErr(err) {
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
     }
+
 });
