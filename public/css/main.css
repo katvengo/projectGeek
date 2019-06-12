@@ -20,4 +20,6 @@ h1 {
  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(101, 71, 126)), color-stop(50%, rgba(93, 69, 107, 0.5)), to(rgb(98, 73, 131)));
 
 }
-
+.hero {
+    background: black url(images/splashpage.jpg) center/ cover;
+}
