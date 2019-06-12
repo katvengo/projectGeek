@@ -79,6 +79,11 @@ $(document).ready(function () {
     // Otherwise we log any errors
 
     function doesUserExist() {
+        app.get('/', function(req, res) {
+            if(req.user){
+                console.log(dbUser.username)
+            }
+        });
         //do get and request whether user exists
         return $.post();
     }
