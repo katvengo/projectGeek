@@ -1,25 +1,22 @@
-@font-face {
-    font-family: 'caramel_macchiato_bouncyRg';
-    src: url('/assets/fonts/caramelmacchiato.woff2') format('woff2'),
-        url('/assets/fonts/caramelmacchiato.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 
-h1 {
- font-size: 75px !important;
- line-height: 220px !important;
- font-family: 'caramel_macchiato_bouncyRg' !important;
- font-weight: bold !important;
- text-align: center;
- text-shadow: rgba(130, 56, 148, 0.2) 3px 3px 3px !important;
- color: rgb(145, 121, 168);
- /*text stroke*/
- -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(101, 71, 126)), color-stop(50%, rgba(93, 69, 107, 0.5)), to(rgb(98, 73, 131)));
-
-}
 .hero {
-    background: black url(images/splashpage.jpg) center/ cover;
+    background: black url('/images/splashpage.jpg') center/ cover;
+}
+
+.title {
+    font-family: 'Bangers', cursive;
+    font-size: 50px;
+}
+
+.subtitle {
+    font-family: 'Jura', sans-serif;
+}
+
+.input {
+    font-family: 'Jura', sans-serif;
+}
+
+.button {
+    font-family: 'Jura', sans-serif;
 }
