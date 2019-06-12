@@ -1,0 +1,22 @@
+
+
+.hero {
+    background: black url('/images/splashpage.jpg') center/ cover;
+}
+
+.title {
+    font-family: 'Bangers', cursive;
+    font-size: 50px;
+}
+
+.subtitle {
+    font-family: 'Jura', sans-serif;
+}
+
+.input {
+    font-family: 'Jura', sans-serif;
+}
+
+.button {
+    font-family: 'Jura', sans-serif;
+}
