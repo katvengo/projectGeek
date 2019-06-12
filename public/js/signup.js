@@ -33,11 +33,13 @@ $(document).ready(function () {
         // Get the value of the input field with id="numb"
         x = document.getElementById("age-input").value;
 
+        console.log('This is x ------->', x);
+
         // If x is Not a Number or less than one or greater than 10
         if (isNaN(x) || x < 12) {
             text = "Members must be 13 years of age or older";
+            alert(text)
         }
-        alert(text)
 
         var a = document.getElementById("name-input").value; 
         if (a === "") {
@@ -75,7 +77,25 @@ $(document).ready(function () {
 
     // Does a post to the signup route. If successful, we are redirected to the members page
     // Otherwise we log any errors
+
+    function doesUserExist() {
+        //do get and request whether user exists
+        return $.post();
+    }
+
+    function addUser() {
+        // do other post
+    }
+
     function signUpUser(name, username, email, password, age, profile) {
+
+        doesUserExist()
+        .then(function(userExists){
+            if(!userExists) {
+                addUser()
+            }
+        });
+
         $.post("/api/signup", {
                 name: name,
                 username: username,
@@ -88,11 +108,13 @@ $(document).ready(function () {
                 window.location.replace(data);
                 console.log("name" + name + "password"+ password)
                 // If there's an error, handle it by throwing up a bootstrap alert
-            }).catch(handleLoginErr);
+            }).catch(handleLoginErr)
+
             
     }
 
     function handleLoginErr(err) {
+        console.log('Username already exists' + err.sqlMessage)
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
     }

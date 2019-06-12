@@ -1,7 +1,9 @@
 var express = require('express')
 var session = require("express-session");
 
-var passport = require("./config/passport");
+var passport = require("./config/passport")
+
+LocalStrategy = require('passport-local').Strategy;
 
 var flash = require('connect-flash');
 
