@@ -11,144 +11,131 @@
     <script defer src='https://use.fontawesome.com/releases/v5.3.1/js/all.js'></script>
     <link href="https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap" rel="stylesheet">
     <script src="/main.js"></script>
-    <style>
-        .hero {
-            background: black url(images/splashpage.jpg) center/ cover;
-        }
-
-        .title {
-            font-family: 'Bangers', cursive;
-            font-size: 70px;
-        }
-
-        .checkbox {
-            font-family: 'Jura', sans-serif;
-        }
-
-        .button {
-            font-family: 'Jura', sans-serif;
-        }
-    </style>
 
 </head>
 
 <body>
     <section class="hero is-success is-fullheight">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-6 is-pulled-left">
-                    <div class="box">
-                        <h3 class="title has-text-black">Pick your fandom:</h3>
-                            <div class="columns is-4">
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Harry Potter
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Marvel
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        DC
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Doctor Who
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Game of Thrones
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="column is-4">
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Supernatural
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Disney
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Sherlock
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Star Wars
-                                    </label>
-                                </div>
-                                <div class="field">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        Anime
-                                    </label>
-                                </div>
-                            </div>
-                    
+        <br>
+
+        <div class="columns">
+            <div class="column">
+                <div class="box">
+                <h3 class="bd-notification is-info has-text-centered" id="fandom-title">Pick Your Fandom!</h3>
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Harry Potter
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Marvel
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                DC
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Doctor Who
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Game of Thrones
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Supernatural
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Disney
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Sherlock
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Star Wars
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Anime
+                            </label>
+                        </div>
                     </div>
                 </div>
-
-                <div class="column is-6 is-pulled-right">
-                    <div class="box">
-                        <form>
-                            <h3 class="title has-text-black">Pick your interests:</h3>
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Comic Books
-                                </label>
-                            </div>
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Movies
-                                </label>
-                            </div>
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Music
-                                </label>
-                            </div>
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Art
-                                </label>
-                            </div>
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Other
-                                </label>
-                            </div>
-                        </form>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box">
+                <p class="bd-notification is-danger has-text-centered" id="interests-title">Pick Your Interests!</p>
+                <div class="columns is-mobile">
+                    <div class="column is-centered">
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Comic Books
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Movies
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Music
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Art
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Other
+                            </label>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
 
-        <a href="profile.html" class="button is-block is-info is-medium is-fullwidth">Create your profile!</a>
-
+                <div class="section is-fluid">
+                    <div class="buttons is-centered">
+                        <a href="profile.html" class="button is-info is-large is-focused">Create your profile!</a>
+                    </div>
+                </div>
     </section>
 
 </body>
