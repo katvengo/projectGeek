@@ -20,3 +20,46 @@
 .button {
     font-family: 'Jura', sans-serif;
 }
+
+.checkbox {
+    font-family: 'Jura', sans-serif;
+}
+
+.navbar-start {
+    font-family: 'Bangers', cursive;
+    font-size: 25px;
+}
+
+.post {
+    font-family: 'Jura', sans-serif;
+}
+
+#newpost {
+    font-family: 'Bangers', cursive;
+    color: black;
+    font-size: 40px;
+}    
+
+#profile-title {
+    font-family: 'Bangers', cursive;
+    color: black;
+    font-size: 40px;
+}
+
+#profile-subtitle {
+    font-family: 'Jura', sans-serif;
+    color: grey;
+    font-size: 30px;
+}
+
+#fandom-title {
+    font-family: 'Bangers', cursive;
+    color: black;
+    font-size: 40px;
+}
+
+#interests-title {
+    font-family: 'Bangers', cursive;
+    color: black;
+    font-size: 40px;
+}
