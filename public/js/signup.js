@@ -6,7 +6,48 @@ $(document).ready(function () {
     var passwordInput = $("input#password-input");
     var ageInput = $("input#age-input");
     var profileInput = $("input#profile-input");
-    // var signUpForm = $("#submit");
+
+    function validateUserData() {
+        var name = document.getElementById("name-input").value
+        var username = document.getElementById("username-input").value
+        var email = document.getElementById("email-input").value
+        var password = document.getElementById("password-input").value
+        var age = document.getElementById("age-input").value
+
+        let emptyFields = {
+            name,
+            username,
+            email,
+            password,
+            age
+        }
+        if (emptyFields === "") {
+            alert("Please fill out all fields")
+        }
+    }
+
+    function signUpUser(name, username, email, password, age, profile) {
+        $.post("/api/signup", {
+                name: name,
+                username: username,
+                email: email,
+                password: password,
+                age: age,
+                profile: profile
+            })
+            .then(function () {
+                window.location.replace(data);
+                if (error) {
+                    res.send(error)
+                }
+                // If there's an error, handle it by throwing up a bootstrap alert
+            }).catch(handleLoginErr)
+    }
+
+    function handleLoginErr(err) {
+        $("#alert .msg").text(err.responseJSON);
+        $("#alert").fadeIn(500);
+    }
 
     // When the signup button is clicked, we validate the email and password are not blank
     $('#submit').on("click", function (event) {
@@ -19,52 +60,26 @@ $(document).ready(function () {
             age: ageInput.val().trim(),
             profile: profileInput.val().trim()
         };
-
         if (!userData.email || !userData.password) {
-         alert("Please fill in all the required forms")  
-             return false;
-        } 
-
-    
-        //Validate Age
-        var x, text;
-        //Validate name
-        var a, alertName
-        // Get the value of the input field with id="numb"
-        x = document.getElementById("age-input").value;
-
-        console.log('This is x ------->', x);
-
-        // If x is Not a Number or less than one or greater than 10
-        if (isNaN(x) || x < 12) {
-            text = "Members must be 13 years of age or older";
-            alert(text)
+            alert("Please fill in all the required forms")
+            return
         }
+        validateUserData()
 
-        var a = document.getElementById("name-input").value; 
-        if (a === "") {
-            alert = "Name must be filled out";
-            alert(alertName)
+        function doesUserExist() {
+            $.get('/members/' + $('#username-input').val().toLowerCase(), function (response) {
+                console.log(response)
+            }).then(function (response) {
+                if (response.username === userData.username || response.email === userData.email) {
+                    alert('User already exists in system please log in')
+                    
+                } else {
+                    signUpUser()
+                }
+            })
         }
+        doesUserExist()
 
-        var b = document.getElementById("username-input").value; 
-        if (b === "") {
-            alert("User name must be filled out");
-            return false;
-        }
-        var c = document.getElementById("email-input").value; 
-        if (c === "") {
-            alert("Email must be filled out");
-            return false;
-        }
-        var d = document.getElementById("password-input").value; 
-        if (d === "") {
-            alert("Password must be filled out");
-            return false;
-        }
-
-
-        // If we have an email and password, run the signUpUser function
         signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile);
         nameInput.val("");
         userNameInput.val("");
@@ -73,55 +88,140 @@ $(document).ready(function () {
         ageInput.val("");
         profileInput.val("");
 
+        alert('Success!')
+        
+
     });
+
+
+    // function doesUserExist(dbUser) {
+    //     $.get('api/signup', {dbUser})
+    //         .done(function(response){
+    //             alert("Success");
+    //             console.log(response)
+    //         })
+
+    // }
+    // if (data.email === userData.email) {
+    //     alert("user already exists")
+    // } else {
+    //     addUser()
+    // }
+
+    // .then(function (dbUser) {
+    //         if(dbUser.email === userData.email){
+    //             alert("user already exists")
+    //         }
+    //         console.log('hitting then' + dbUser)
+    //         // return done(err, data)
+    //         // res.json(dbUser)
+    //     });
+    //     // console.log("We are here now" + userData)
+    // if (user === userData.username) {
+    //     alert("user already exists")
+    // } else {
+    //     console.log("does userexist didnt work")
+    // }
+    // });
+    // return $.post('/signup', function (req, res) {
+    //     // db.User.findOne({
+    //     //     where: {
+    //     //         email: req.params.email
+    //     //     }
+    //     // }).then(function () {
+    //     //     console.log('hitting then')
+    //     //     // return done(err, data)
+    //     //     // res.json(dbUser)
+    //     // });
+    // })
+
+
+    // function addUser(name, username, email, password, age, profile) {
+    //     $.post("/api/signup", {
+    //             name: name,
+    //             username: username,
+    //             email: email,
+    //             password: password,
+    //             age: age,
+    //             profile: profile
+    //         })
+    //         .then(function () {
+    //             window.location.replace(data);
+    //             if (error) {
+    //                 res.send(error)
+    //             }
+    //             // If there's an error, handle it by throwing up a bootstrap alert
+    //         }).catch(handleLoginErr)
+    // }
+
+    // function signUpUser() {
+    //     doesUserExist()
+    //         .then(function () {
+    //             console.log("is this thing on")
+    //             if (!userExists) {
+    //                 signup(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile)
+    //                 nameInput.val("");
+    //                 userNameInput.val("");
+    //                 emailInput.val("");
+    //                 passwordInput.val("");
+    //                 ageInput.val("");
+    //                 profileInput.val("");
+    //                 addUser()
+    //             } else if (userExists) {
+    //                 alert("User already exists please log-in")
+    //             }
+    //         });
+
+
+
+    // }
+
+    // function handleLoginErr(err) {
+    //     $("#alert .msg").text(err.responseJSON);
+    //     $("#alert").fadeIn(500);
+    // }
+    //If we have an email and password, run the signUpUser function
+    // signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile);
+    // nameInput.val("");
+    // userNameInput.val("");
+    // emailInput.val("");
+    // passwordInput.val("");
+    // ageInput.val("");
+    // profileInput.val("");
+    // signUpUser()
+
 
     // Does a post to the signup route. If successful, we are redirected to the members page
     // Otherwise we log any errors
 
-    function doesUserExist() {
-        app.get('/', function(req, res) {
-            if(req.user){
-                console.log(dbUser.username)
-            }
-        });
-        //do get and request whether user exists
-        return $.post();
-    }
 
-    function addUser() {
-        // do other post
-    }
+    //do get and request whether user exists
 
-    function signUpUser(name, username, email, password, age, profile) {
 
-        doesUserExist()
-        .then(function(userExists){
-            if(!userExists) {
-                addUser()
-            }
-        });
+    // function signUpUser(name, username, email, password, age, profile) {
+    //     doesUserExist()
+    //         .then(function (userExists) {
+    //             if (!userExists) {
+    //                 addUser()
+    //             } else if(userExists){
+    //                 alert("User already exists please log-in")
+    //             }
+    //         });
 
-        $.post("/api/signup", {
-                name: name,
-                username: username,
-                email: email,
-                password: password,
-                age: age,
-                profile: profile
-            })
-            .then(function (data) {
-                window.location.replace(data);
-                console.log("name" + name + "password"+ password)
-                // If there's an error, handle it by throwing up a bootstrap alert
-            }).catch(handleLoginErr)
+    //     $.post("/api/signup", {
+    //             name: name,
+    //             username: username,
+    //             email: email,
+    //             password: password,
+    //             age: age,
+    //             profile: profile
+    //         })
+    //         .then(function (data) {
+    //             window.location.replace(data);
+    //             // If there's an error, handle it by throwing up a bootstrap alert
+    //         }).catch(handleLoginErr)
 
-            
-    }
 
-    function handleLoginErr(err) {
-        console.log('Username already exists' + err.sqlMessage)
-        $("#alert .msg").text(err.responseJSON);
-        $("#alert").fadeIn(500);
-    }
+    // }
 
-});
+})
