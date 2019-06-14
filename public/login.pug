@@ -27,11 +27,11 @@ html
                 .field
                   .control
                     input#password-input.input.is-large(type='password', placeholder='Your Password')
-                .field
-                  label.checkbox
-                    input(type='checkbox')
-                    |                                     Remember me
-                button#submit.button.is-block.is-info.is-large.is-fullwidth Login
-            p.has-text-grey
+                p#forgot.has-text-grey
+                  a(href='forgottenpassword.html') Forgot Password?
+                  |
+                br
+                button#submit.button.is-block.is-info.is-large.is-fullwidth(type='submit', onclick="window.location.href = '/profile.html';") Log In
+            p#signup.has-text-grey
               a(href='signup.html') Sign Up
-              |   ·
+              |   
