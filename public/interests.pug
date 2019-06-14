@@ -1,0 +1,90 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title CongreGeek
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', type='text/css', media='screen', href='/css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css')
+    script(defer='', src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
+    link(href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap', rel='stylesheet')
+    script(src='/main.js')
+  body
+    section.hero.is-success.is-fullheight
+      br
+      .columns
+        .column
+          .box
+            h3#fandom-title.bd-notification.is-info.has-text-centered Pick Your Fandom!
+            .columns.is-mobile
+              .column
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Harry Potter
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Marvel
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 DC
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Doctor Who
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Game of Thrones
+              .column
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Supernatural
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Disney
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Sherlock
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Star Wars
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Anime
+        .column
+          .box
+            p#interests-title.bd-notification.is-danger.has-text-centered Pick Your Interests!
+            .columns.is-mobile
+              .column.is-centered
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Comic Books
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Movies
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Music
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Art
+                .field
+                  label.checkbox
+                    input(type='checkbox')
+                    |                                 Other
+      .section.is-fluid
+        .buttons.is-centered
+          a.button.is-info.is-large.is-focused(href='profile.html') Create your profile!

@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title CongreGeek
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', type='text/css', media='screen', href='/css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css')
+    script(defer='', src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
+    link(href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap', rel='stylesheet')
+    script(src='https://code.jquery.com/jquery.js')
+  body
+    section.hero.is-success.is-fullheight
+      .hero-body
+        .container.has-text-centered
+          .column.is-4.is-offset-4
+            .box
+              h3.title.has-text-black Tell Us About You
+              p.subtitle.has-text-grey Just a couple of questions so we can get to know each other.
+              form.signup(name='myForm')
+                .field.form-group
+                  .control
+                    input#name-input.input.is-small(type='form-control', placeholder='Name', autofocus='', name='reqName', required='')
+                .field
+                  .control
+                    input#username-input.input.is-small(type='form-control', placeholder='Username', name='reqUser', autofocus='')
+                .field
+                  .control
+                    input#password-input.input.is-small(type='form-control', placeholder='Password', autofocus='', name='reqPassword', required='')
+                .field
+                  .control
+                    input#email-input.input.is-small(type='form-control', placeholder='email', autofocus='', name='reqEmail', required='')
+                .field
+                  .control
+                    input#age-input.input.is-small(type='form-control', placeholder='Age', autofocus='')
+                .field
+                  .control
+                    input#profile-input.input.is-small(type='form-control', placeholder='Your Photo/Avatar', autofocus='')
+                button#submit.button.is-block.is-info.is-medium.is-fullwidth(type='submit', onclick="window.location.href = '/signup';") Sign up!
+    #usernameResponseHidden
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='./js/signup.js')
