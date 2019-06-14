@@ -16,8 +16,9 @@ html
         .container.has-text-centered
           .column.is-4.is-offset-4
             .box
-              h3.title.has-text-black Tell Us About You
-              p.subtitle.has-text-grey Just a couple of questions so we can get to know each other.
+              figure.avatar
+                img(src='images/congregeeklogo.png', width='275', height='275')
+              p.subtitle.has-text-grey Tell us about you.
               form.signup(name='myForm')
                 .field.form-group
                   .control
@@ -38,6 +39,9 @@ html
                   .control
                     input#profile-input.input.is-small(type='form-control', placeholder='Your Photo/Avatar', autofocus='')
                 button#submit.button.is-block.is-info.is-medium.is-fullwidth(type='submit', onclick="window.location.href = '/interests.html';") Sign up!
+          p#login.has-text-grey
+            a(href='login.html') Log In
+            |       
     #usernameResponseHidden
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='./js/signup.js')
