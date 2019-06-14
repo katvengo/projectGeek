@@ -6,7 +6,7 @@
 
 .title {
     font-family: 'Bangers', cursive;
-    font-size: 50px;
+    font-size: 70px;
 }
 
 .subtitle {
@@ -18,5 +18,9 @@
 }
 
 .button {
+    font-family: 'Jura', sans-serif;
+}
+
+.checkbox {
     font-family: 'Jura', sans-serif;
 }

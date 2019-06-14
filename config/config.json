@@ -4,7 +4,7 @@
     "password": "root",
     "database": "geeks",
     "host": "127.0.0.1",
-    "port": 8889,
+    "port": 3306,
     "dialect": "mysql"
     
     },
@@ -13,7 +13,7 @@
     "password": "root",
     "database": "geeks",
     "host": "127.0.0.1",
-    "port": 8889,
+    "port": 3306,
     "dialect": "mysql"
   },
   "production": {
@@ -21,7 +21,7 @@
     "password": "root",
     "database": "geeks",
     "host": "127.0.0.1",
-    "port": 8889,
+    "port": 3306,
     "dialect": "mysql"
   }
 }
