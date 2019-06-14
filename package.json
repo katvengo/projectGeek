@@ -33,7 +33,7 @@
     "pug-cli": "^1.0.0-alpha6",
     "pug.js": "^1.2.3",
     "require": "^2.4.20",
-    "sequelize": "^5.8.7",
+    "sequelize": "^5.8.9",
     "session": "^0.1.0"
   }
 }
