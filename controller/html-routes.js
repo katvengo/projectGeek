@@ -6,15 +6,18 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function (app) {
 
     app.get('/', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/index.html'));
+        res.render('index')
+        // res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
     app.get('/signup', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/signup.html'));
+        res.render('signup')
+        // res.sendFile(path.join(__dirname, '../public/signup.html'));
     });
 
     app.get('/logout', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/logout.html'));
+        res.render('logout')
+        // res.sendFile(path.join(__dirname, '../public/logout.html'));
     });
 
 
@@ -26,29 +29,38 @@ module.exports = function (app) {
         // If the user already has an account send them to the members page
         if (req.user) {
             res.redirect("/members");
+        } else {
+            return res.render('login')
         }
-        res.sendFile(path.join(__dirname, "../public/login.html"));
     });
 
-    app.get("/members", isAuthenticated, function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/members.html"));
+    app.get("/members", isAuthenticated, function (req, res, dbUser) {
+        res.render('members', {
+            username: dbUser.username,
+            profile: dbUser.profile,
+            email: dbUser.email,
+        })
     });
 
     app.get("/profile", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/profile.html"));
+        res.render('profile', {
+            username: dbUser.username
+        })
+        // res.sendFile(path.join(__dirname, "../public/profile.html"));
     })
-    // app.get("/api/user_data", function (req, res) {
-    //     if (!req.user) {
-    //         // The user is not logged in, send back an empty object
-    //         res.json({});
-    //     } else {
-    //         // Otherwise send back the user's email and id
-    //         // Sending back a password, even a hashed password, isn't a good idea
-    //         res.json({
-    //             email: req.user.email,
-    //             id: req.user.id
-    //         });
-    //     }
-    // });
+
+    app.get("/api/user_data", function (req, res) {
+        if (!req.user) {
+            // The user is not logged in, send back an empty object
+            res.json({});
+        } else {
+            // Otherwise send back the user's email and id
+            // Sending back a password, even a hashed password, isn't a good idea
+            res.json({
+                email: req.user.email,
+                id: req.user.id
+            });
+        }
+    });
 
 };

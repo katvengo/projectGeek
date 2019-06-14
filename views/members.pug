@@ -1,0 +1,103 @@
+doctype html
+html.has-navbar-fixed-top
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title CongreGeek
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', type='text/css', media='screen', href='/css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css')
+    script(defer='', src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
+    link(href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap', rel='stylesheet')
+    script(src='https://code.jquery.com/jquery.js')
+  body
+    nav.navbar.is-white.is-fixed-top.topNav
+      .container
+        .navbar-brand
+          a.navbar-item(href='profile')
+            img(src='images/congregeeklogo.png', width='100', height='20')
+          .navbar-burger.burger(data-target='topNav')
+            span
+            span
+            span
+        #topNav.navbar-end
+          .navbar-start
+            a.navbar-item(href='profile.html') Home
+            a.navbar-item(href='members.html') Fellow Geeks
+            a.navbar-item(href='messageboard.html') Geek Speak
+            a.navbar-item(href='index.html') Log Out
+          .navbar-end
+            .navbar-item
+              .field.is-grouped
+                p.control
+    section.hero.is-success.is-fullheight
+      br
+      .container.is-fluid
+        .columns.is-multiline.is-mobile
+       
+
+  
+          .column.is-one-quarter
+            .box.content
+              article.post
+                h4 #{username}
+                .media
+                  .media-left
+                    p.image.is-32x32 img(src='#{profile}')
+                      //- img(src='https://d1w8c6s6gmwlek.cloudfront.net/live-tees.com/square/340/543/34054359.jpg')
+                  .media-content
+                    .interests-content
+                      p #{email}
+                        //- | Interests: Marvel, Comic Books, Movies
+
+
+
+
+          //- .column.is-one-quarter
+          //-   .box.content
+          //-     article.post
+          //-       h4 @lilReyRey
+          //-       .media
+          //-         .media-left
+          //-           p.image.is-32x32
+          //-             img(src='https://i.pinimg.com/originals/4f/1d/66/4f1d663add1f43363d600e21a01cbd14.jpg')
+          //-         .media-content
+          //-           .interests-content
+          //-             p
+          //-               | Interests: Star Wars, Disney, Movies
+          //- .column.is-one-quarter
+          //-   .box.content
+          //-     article.post
+          //-       h4 @ThisRingIsHeavyAF
+          //-       .media
+          //-         .media-left
+          //-           p.image.is-32x32
+          //-             img(src='https://slack-imgs.com/?c=1&url=https%3A%2F%2Fi.imgur.com%2Fvo2rIun.png')
+          //-         .media-content
+          //-           .interests-content
+          //-             p
+          //-               | Interests: Movies
+          //- .column.is-one-quarter
+          //-   .box.content
+          //-     article.post
+          //-       h4 @Falcon
+          //-       .media
+          //-         .media-left
+          //-           p.image.is-32x32
+          //-             img(src='https://slack-imgs.com/?c=1&url=https%3A%2F%2Fbglh-marketplace.com%2Fwp-content%2Fuploads%2F2015%2F02%2Fo-ANTHONY-MACKIE-facebook-300x300.jpg')
+          //-         .media-content
+          //-           .interests-content
+          //-             p
+          //-               | Interests: Marvel, Comic Books, Movies
+          //- .column.is-one-quarter
+          //-   .box.content
+          //-     article.post
+          //-       h4 @DumbosMomma
+          //-       .media
+          //-         .media-left
+          //-           p.image.is-32x32
+          //-             img(src='https://slack-imgs.com/?c=1&url=http%3A%2F%2Fimg.timeinc.net%2Ftime%2Fphotoessays%2F2008%2Fmothers_day%2Fgd_mom_dumbo.jpg')
+          //-         .media-content
+          //-           .interests-content
+          //-             p
+          //-               | Interests: Disney, Movies

@@ -63,3 +63,23 @@
     color: black;
     font-size: 40px;
 }
+
+#login {
+    font-family: 'Jura', sans-serif;
+    font-size: 18px;
+}
+
+#forgot {
+    font-family: 'Jura', sans-serif;
+    font-size: 18px;
+}
+
+#signup {
+    font-family: 'Jura', sans-serif;
+    font-size: 18px;
+}
+
+#backToSignUp {
+    font-family: 'Jura', sans-serif;
+    font-size: 18px;
+}
