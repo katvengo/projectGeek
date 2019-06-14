@@ -35,11 +35,7 @@ module.exports = function (app) {
     });
 
     app.get("/members", isAuthenticated, function (req, res, dbUser) {
-        res.render('members', {
-            username: dbUser.username,
-            profile: dbUser.profile,
-            email: dbUser.email,
-        })
+        res.render('members', { username: dbUser.username, profile: dbUser.profile, email: dbUser.email })
     });
 
     app.get("/profile", function (req, res) {

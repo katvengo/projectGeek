@@ -69,7 +69,7 @@ module.exports = function (app) {
     app.get("/members", function (req, res) {
         db.User.findAll({})
             .then(function (dbUser) {
-                return res.json(dbUser)
+                return res.send(dbUser)
             })
     })
 
