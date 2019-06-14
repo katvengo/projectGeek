@@ -19,23 +19,24 @@ module.exports = function (app) {
             username: req.query.username,
             email: req.body.email
         }, function (err, user) {
+            var message;
             if (err) {
                 console.log(err);
-            }
-            var message;
-            if (user) {
+            } else if (user) {
                 console.log(user)
                 message = "user exists";
                 console.log(message)
             } else {
                 message = "success!"
                 console.log(message)
+                res.json({
+                    message: message
+                });
             }
-            res.json({
-                message: messafe
-            });
+
         })
     })
+
     app.post("/api/signup", function (req, res) {
         console.log(req.body);
         db.User.create({
@@ -53,16 +54,16 @@ module.exports = function (app) {
             // res.status(409).json(err.errors[0].message);
         });
     });
-    // app.post("/profile", function (req, res) {
-    //     console.log(req.body);
-    //     db.User.findOne({
-    //         where: {
-    //             username: req.params.username
-    //         }
-    //     }).then(function (dbUser) {
-    //         return res.json(dbUser)
-    //     })
-    // })
+    app.post("/profile", function (req, res) {
+        console.log(req.body);
+        db.User.findOne({
+            where: {
+                username: req.params.username
+            }
+        }).then(function (dbUser) {
+            return res.json(dbUser)
+        })
+    })
 
 
     app.get("/members", function (req, res) {
@@ -85,12 +86,12 @@ module.exports = function (app) {
 
     app.get("/logout", function (req, res) {
         req.logout();
-        res.redirect("/");
+        res.render("index");
     });
 
 
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
-        res.render('members')
+        res.json('/members')
     });
 
 }
