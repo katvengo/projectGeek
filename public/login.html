@@ -1,59 +1,48 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CongreGeek</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css'>
-    <script defer src='https://use.fontawesome.com/releases/v5.3.1/js/all.js'></script>
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap" rel="stylesheet">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer="" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Jura&amp;display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./js/login.js"></script>
-    
-</head>
-
-<body>
+  </head>
+  <body>
     <section class="hero is-success is-fullheight">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-4 is-offset-4">
-                    <div class="box">
-                        <figure class="avatar">
-                            <img src="images/congregeeklogo.png">
-                        </figure>
-                        <p class="subtitle has-text-grey">Please login to proceed.</p>
-                        <form>
-                            <div class="field">
-                                <div class="control">
-                                    <input id="email-input" class="input is-large" type="email" placeholder="Your Email" autofocus="">
-                                </div>
-                            </div>
-
-                            <div class="field">
-                                <div class="control">
-                                    <input id="password-input" class="input is-large" type="password" placeholder="Your Password">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Remember me
-                                </label>
-                            </div>
-                            <button id="submit" class="button is-block is-info is-large is-fullwidth">Login</button>
-                        </form>
-                    </div>
-                    <p class="has-text-grey">
-                        <a href="signup.html">Sign Up</a> &nbsp;·&nbsp;
-                    </p>
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="column is-4 is-offset-4">
+            <div class="box">
+              <figure class="avatar"><img src="images/congregeeklogo.png"></figure>
+              <p class="subtitle has-text-grey">Please login to proceed.</p>
+              <form>
+                <div class="field">
+                  <div class="control">
+                    <input class="input is-large" id="email-input" type="email" placeholder="Your Email" autofocus="">
+                  </div>
                 </div>
+                <div class="field">
+                  <div class="control">
+                    <input class="input is-large" id="password-input" type="password" placeholder="Your Password">
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="checkbox">
+                    <input type="checkbox">                                    Remember me
+                  </label>
+                </div>
+                <button class="button is-block is-info is-large is-fullwidth" id="submit">Login</button>
+              </form>
             </div>
+            <p class="has-text-grey"><a href="signup.html">Sign Up</a>  ·</p>
+          </div>
         </div>
+      </div>
     </section>
-
-</body>
-
+  </body>
 </html>
