@@ -32,7 +32,7 @@ module.exports = function (app) {
     });
 
     app.get("/members", isAuthenticated, function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/members.html"));
+        res.render('members', { username: username, profile: profile, email: email})
     });
 
     // app.get("/profile", function (req, res) {

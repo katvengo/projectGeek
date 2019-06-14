@@ -4,7 +4,6 @@ var session = require("express-session");
 
 var passport = require("./config/passport")
 
-
 LocalStrategy = require('passport-local').Strategy;
 
 var flash = require('connect-flash');
@@ -16,6 +15,7 @@ var PORT = process.env.PORT || 8080
 var app = express();
 
 app.set("view engine", "pug");
+
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static('public'));

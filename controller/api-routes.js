@@ -65,10 +65,10 @@ module.exports = function (app) {
     // })
 
 
-    app.get("/api/members", function (req, res) {
+    app.get("/members", function (req, res) {
         db.User.findAll({})
             .then(function (dbUser) {
-                res.json(dbUser)
+                return res.json(dbUser)
             })
     })
 
@@ -90,7 +90,7 @@ module.exports = function (app) {
 
 
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
-        res.json("/members");
+        res.render('members')
     });
 
 }
