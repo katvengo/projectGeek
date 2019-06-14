@@ -13,6 +13,7 @@ module.exports = function (app) {
         })
     })
 
+
     app.get("/api/members", function (req, res) {
         db.User.findOne({
             username: req.query.username,
@@ -52,6 +53,16 @@ module.exports = function (app) {
             // res.status(409).json(err.errors[0].message);
         });
     });
+    // app.post("/profile", function (req, res) {
+    //     console.log(req.body);
+    //     db.User.findOne({
+    //         where: {
+    //             username: req.params.username
+    //         }
+    //     }).then(function (dbUser) {
+    //         return res.json(dbUser)
+    //     })
+    // })
 
 
     app.get("/api/members", function (req, res) {
