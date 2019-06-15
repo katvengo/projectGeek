@@ -34,13 +34,8 @@ module.exports = function (app) {
         }
     });
 
-<<<<<<< HEAD
-    app.get("/members", isAuthenticated, function (req, res) {
-        res.render('members', { res} )
-=======
     app.get("/members", isAuthenticated, function (req, res, dbUser) {
         res.render('members', { user: dbUser})
->>>>>>> 9ffea9bc0538ba94a4c9553791c3203432036f96
     });
 
     app.get("/profile", function (req, res) {
