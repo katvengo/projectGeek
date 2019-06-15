@@ -35,7 +35,7 @@ module.exports = function (app) {
     });
 
     app.get("/members", isAuthenticated, function (req, res) {
-        res.render('members', { 'username': 'kat', 'profile': 'profile', 'email': 'email' })
+        res.render('members', { res} )
     });
 
     app.get("/profile", function (req, res) {
