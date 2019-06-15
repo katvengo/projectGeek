@@ -34,8 +34,8 @@ module.exports = function (app) {
         }
     });
 
-    app.get("/members", isAuthenticated, function (req, res) {
-        res.render('members', { 'username': 'kat', 'profile': 'profile', 'email': 'email' })
+    app.get("/members", isAuthenticated, function (req, res, dbUser) {
+        res.render('members', { user: dbUser})
     });
 
     app.get("/profile", function (req, res) {
@@ -44,7 +44,9 @@ module.exports = function (app) {
         })
         // res.sendFile(path.join(__dirname, "../public/profile.html"));
     })
-
+    app.get('/interests', function (req, res){
+        res.render('interests')
+    })
     app.get("/api/user_data", function (req, res) {
         if (!req.user) {
             // The user is not logged in, send back an empty object

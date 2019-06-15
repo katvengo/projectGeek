@@ -1,55 +1,49 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CongreGeek</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <script defer="" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Jura&amp;display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery.js"></script>
-  </head>
-  <body>
-    <nav class="navbar is-white is-fixed-top topNav">
-      <div class="container">
-        <div class="navbar-brand"><a class="navbar-item" href="profile"><img src="images/congregeeklogo.png" width="100" height="20"></a>
-          <div class="navbar-burger burger" data-target="topNav"><span></span><span></span><span></span></div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CongreGeek</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Bangers|Jura&amp;display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <div class="script" src="/js/main.js"></div>
+</head>
+<nav class="navbar is-white is-fixed-top topNav">
+  <div class="container">
+    <div class="navbar-brand"><a class="navbar-item" href="profile"><img src="images/congregeeklogo.png" width="100" height="20"></a>
+      <div class="navbar-burger burger" data-target="topNav"><span></span><span></span><span></span></div>
+    </div>
+    <div class="navbar-end" id="topNav">
+      <div class="navbar-start"><a class="navbar-item" href="profile.html">Home</a><a class="navbar-item" href="members.html">Fellow Geeks</a><a class="navbar-item" href="messageboard.html">Geek Speak</a><a class="navbar-item" href="index.html">Log Out</a></div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control"></p>
+          </div>
         </div>
-        <div class="navbar-end" id="topNav">
-          <div class="navbar-start"><a class="navbar-item" href="profile.html">Home</a><a class="navbar-item" href="members.html">Fellow Geeks</a><a class="navbar-item" href="messageboard.html">Geek Speak</a><a class="navbar-item" href="index.html">Log Out</a></div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control"></p>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="hero is-success is-fullheight"><br></section>
+<div class="container is-fluid">
+  <div class="columns is-multiline is-mobile">
+    <div class="column is-one-quarter">
+      <div class="box content">
+        <article class="post">
+          <h1 id="welcome-user"></h1>
+          <div class="media">
+            <div class="media-left"></div>
+            <div class="media-content">
+              <div class="interests-content">
+                <p> </p>
               </div>
             </div>
           </div>
-        </div>
+        </article>
       </div>
-    </nav>
-    <section class="hero is-success is-fullheight"><br>
-      <div class="container is-fluid">
-        <div class="columns is-multiline is-mobile"></div>
-      </div>
-    </section>
-  </body>
-  <div class="column is-one-quarter">
-    <div class="box content">
-      <article class="post">
-        <h4> </h4>
-        <div id="username"></div>
-        <div class="media">
-          <div class="media-left"></div>
-          <div class="media-content">
-            <div class="interests-content">
-              <p> </p>
-              <div id="email"></div>
-            </div>
-          </div>
-        </div>
-      </article>
     </div>
   </div>
-</html>
+</div>
