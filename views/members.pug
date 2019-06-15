@@ -12,20 +12,17 @@ head
 nav.navbar.is-white.is-fixed-top.topNav
   .container
     .navbar-brand
-      each user in users
-        a.navbar-item(href=`members/${user.username}`)
-          img(src='images/congregeeklogo.png', width='100', height='20')
+      a.navbar-item(href=`/`)
+        img(src='../images/congregeeklogo.png', width='100', height='20')
       .navbar-burger.burger(data-target='topNav')
         span
         span
         span
     #topNav.navbar-end
       .navbar-start
-        each user in users
-          a.navbar-item(href=`members/${user.username}`) Home
-          a.navbar-item(href='members') Fellow Geeks
-          a.navbar-item(href='messageboard') Geek Speak
-          a.navbar-item(href='/') Log Out
+        a.navbar-item(href=`/`) Home
+        a.navbar-item(href='members') Fellow Geeks
+        a.navbar-item(href='/') Log Out
       .navbar-end
         .navbar-item
           .field.is-grouped
