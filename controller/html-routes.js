@@ -1,10 +1,19 @@
 var path = require('path');
-
+var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+
+// import Sequelize from 'sequelize';
+// import hierarchy from 'sequelize-hierarchy';
 
 
 module.exports = function (app) {
+    // test('test heirarchy', () => {
+    //     hierarchy(Sequelize);
 
+    //     const SequelizeInstance = new Sequelize('test', 'root', '123', {
+    //         dialect: 'mysql'
+    //     });
+    // })
     app.get('/', function (req, res) {
         res.render('index')
         // res.sendFile(path.join(__dirname, '../public/index.html'));
@@ -28,15 +37,20 @@ module.exports = function (app) {
     app.get("/login", function (req, res) {
         // If the user already has an account send them to the members page
         if (req.user) {
-            res.redirect("/members");
+            res.redirect("members");
         } else {
-            return res.render('login')
+            res.render('login');
         }
     });
 
-    app.get("/members", isAuthenticated, function (req, res, dbUser) {
-        res.render('members', { user: dbUser})
-    });
+    app.get("/members", isAuthenticated, function (req, res) {
+        db.User.findAll().then(function (users) {
+            console.log('users', users)
+             res.render('members', {users})
+        })
+       
+       
+    })
 
     app.get("/profile", function (req, res) {
         res.render('profile', {
@@ -44,7 +58,7 @@ module.exports = function (app) {
         })
         // res.sendFile(path.join(__dirname, "../public/profile.html"));
     })
-    app.get('/interests', function (req, res){
+    app.get('/interests', function (req, res) {
         res.render('interests')
     })
     app.get("/api/user_data", function (req, res) {

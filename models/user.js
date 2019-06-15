@@ -34,7 +34,8 @@ module.exports = function (sequelize, DataTypes) {
             // validate: {
             //     isURL: false,
             // }
-        }
+        },
+    
 
     });
 
