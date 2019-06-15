@@ -35,7 +35,11 @@ module.exports = function (sequelize, DataTypes) {
             //     isURL: false,
             // }
         },
-    
+
+        interests: {
+            type: DataTypes.STRING,
+        },
+
 
     });
 
