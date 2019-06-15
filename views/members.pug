@@ -30,15 +30,18 @@ nav.navbar.is-white.is-fixed-top.topNav
             p.control
 section.hero.is-success.is-fullheight
   br
-.container.is-fluid
-  .columns.is-multiline.is-mobile
-  each user in users
-    .column.is-one-quarter
-      .box.content
-        article.post
-          h1 #{user.username}
-            .media
-              .media-left
-                .media-content
-                  .interests-content
-                    p #{user.email}
+  .container.is-fluid
+    .columns.is-multiline.is-mobile
+      each user in users
+        .column.is-one-quarter
+          br
+          br
+          .box.content
+            article.post
+                .media
+                  .media-left.figure.profile-pic
+                    img(src=`${user.profile}`, width='75', height='32')
+                    p #{user.username}
+                      .media-content
+                      .interests-content
+                        p #{user.email}
