@@ -1,5 +1,5 @@
 {
-  "name": "projectGeek",
+  "name": "project-geek",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/katvengo/projectGeek#readme",
   "dependencies": {
+    "async": "^3.0.1",
+    "async-waterfall": "^0.1.5",
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
@@ -27,6 +29,7 @@
     "express-session": "^1.16.1",
     "mysql2": "^1.6.5",
     "node": "^12.4.0",
+    "nodemailer": "^6.2.1",
     "nodemon": "^1.19.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",

@@ -35,6 +35,22 @@ module.exports = function (app) {
     app.get("/members", isAuthenticated, function (req, res) {
         db.User.findAll().then(function (users) {
             console.log('users', users)
+
+    app.get('/forgot', function (req, res) {
+        res.render("password-forget");
+    });
+
+    app.get('/reset/:token', function (req, res) {
+        User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
+            if (!user) {
+                alert('Password reset token is invalid or has expired.');
+                return res.redirect('/forgot');
+            }
+            res.render('password-reset', {
+                user: req.user
+            });
+        });
+    });
             res.render('members', {
                 users
             })
@@ -66,5 +82,6 @@ module.exports = function (app) {
             });
         }
     });
+}
 
-};
+
