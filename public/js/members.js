@@ -7,4 +7,17 @@ $(document).ready(function(){
         console.log(res)
     })
 
+    $.ajax({
+        type: "GET",
+        url: "/api/members/:username"
+    }).done(function(res) {
+        console.log(res)
+    })
+
+    $.ajax({
+        type: "GET",
+        url: "/api/members/:username"
+    }).done(function(res) {
+        console.log(res)
+    })
 })

@@ -73,23 +73,17 @@ module.exports = function (app) {
         })
     })
 
-    // app.get("/members/:username", function (req, res) {
-    //     var username = req.params.username
+    app.get("/members/:username", function (req, res) {
+        var username = req.params.username
 
-    //     for (var i = 0; i < members.length; i++) {
-    //         if (username === members[i].routeName) {
-    //             return res.json(members[i]);
-    //         }
-    //     }
-    //     db.User.findOne({
-    //         where: {
-    //             id: req.params.id,
-    //             username: req.body.username
-    //         }
-    //     }).then(function (dbUser) {
-    //         return res.json(dbUser)
-    //     })
-    // })
+        db.User.findOne({
+            where: {
+                username: req.params.username
+            }
+        }).then(function (user) {
+            return res.json(user)
+        })
+    })
 
     app.get("/logout", function (req, res) {
         req.logout();
