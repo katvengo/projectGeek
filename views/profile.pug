@@ -41,9 +41,9 @@ html.has-navbar-fixed-top
                 figure.profile-pic
                   img(src='https://d1w8c6s6gmwlek.cloudfront.net/live-tees.com/square/340/543/34054359.jpg', alt='Geek Pic')
               .column.is-6.is-offset-1
-                h1#profile-title.title.is-2
-                  | @BigPurpleGuy
+                h1#profile-title.title.is-2 #{user.username}
                 h2#profile-subtitle.subtitle.is-4
                   | Interests: Marvel, Comic Books, Movies
                 br
+                h5 #{user.email}
         .column

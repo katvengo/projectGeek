@@ -1,25 +1,23 @@
 var path = require('path');
-
+var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+
+// import Sequelize from 'sequelize';
+// import hierarchy from 'sequelize-hierarchy';
 
 
 module.exports = function (app) {
-
     app.get('/', function (req, res) {
         res.render('index')
-        // res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
     app.get('/signup', function (req, res) {
         res.render('signup')
-        // res.sendFile(path.join(__dirname, '../public/signup.html'));
     });
 
     app.get('/logout', function (req, res) {
         res.render('logout')
-        // res.sendFile(path.join(__dirname, '../public/logout.html'));
     });
-
 
     app.get('/css', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/css/main.css'));
@@ -28,23 +26,31 @@ module.exports = function (app) {
     app.get("/login", function (req, res) {
         // If the user already has an account send them to the members page
         if (req.user) {
-            res.redirect("/members");
+            res.redirect("members");
         } else {
-            return res.render('login')
+            res.render('login');
         }
     });
 
-    app.get("/members", isAuthenticated, function (req, res, dbUser) {
-        res.render('members', { user: dbUser})
-    });
-
-    app.get("/profile", function (req, res) {
-        res.render('profile', {
-            username: dbUser.username
+    app.get("/members", isAuthenticated, function (req, res) {
+        db.User.findAll().then(function (users) {
+            console.log('users', users)
+            res.render('members', {
+                users
+            })
         })
-        // res.sendFile(path.join(__dirname, "../public/profile.html"));
     })
-    app.get('/interests', function (req, res){
+    app.get("/members/:username", isAuthenticated, function (req, res) {
+        db.User.findOne({
+            where: {
+                username: req.params.username
+            }
+        }).then(function (user) {
+            return res.render('profile', {user})
+        })
+    })
+
+    app.get('/interests', function (req, res) {
         res.render('interests')
     })
     app.get("/api/user_data", function (req, res) {

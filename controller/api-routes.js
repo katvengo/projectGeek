@@ -14,28 +14,28 @@ module.exports = function (app) {
     })
 
 
-    app.get("/api/members", function (req, res) {
-        db.User.findOne({
-            username: req.query.username,
-            email: req.body.email
-        }, function (err, user) {
-            var message;
-            if (err) {
-                console.log(err);
-            } else if (user) {
-                console.log(user)
-                message = "user exists";
-                console.log(message)
-            } else {
-                message = "success!"
-                console.log(message)
-                res.json({
-                    message: message
-                });
-            }
+    // app.get("/api/members", function (req, res) {
+    //     db.User.findOne({
+    //         username: req.query.username,
+    //         email: req.body.email
+    //     }, function (err, user) {
+    //         var message;
+    //         if (err) {
+    //             console.log(err);
+    //         } else if (user) {
+    //             console.log(user)
+    //             message = "user exists";
+    //             console.log(message)
+    //         } else {
+    //             message = "success!"
+    //             console.log(message)
+    //             res.json({
+    //                 message: message
+    //             });
+    //         }
 
-        })
-    })
+    //     })
+    // })
 
     app.post("/api/signup", function (req, res) {
         console.log(req.body);
@@ -54,33 +54,34 @@ module.exports = function (app) {
             // res.status(409).json(err.errors[0].message);
         });
     });
-    app.post("/profile", function (req, res) {
-        console.log(req.body);
+
+    // app.post("/profile", function (req, res) {
+    //     console.log(req.body);
+    //     db.User.findOne({
+    //         where: {
+    //             username: req.params.username
+    //         }
+    //     }).then(function (dbUser) {
+    //         return res.json(dbUser)
+    //     })
+    // })
+
+
+    app.get("/api/members", function (req, res) {
+        db.User.findAll().then(function (dbUsers) {
+            return res.json(dbUsers)
+        })
+    })
+
+    app.get("/members/:username", function (req, res) {
+        var username = req.params.username
+
         db.User.findOne({
             where: {
                 username: req.params.username
             }
-        }).then(function (dbUser) {
-            return res.json(dbUser)
-        })
-    })
-
-
-    app.get("/members", function (req, res) {
-        db.User.findAll({})
-            .then(function (dbUser) {
-                return res.json(dbUser)
-            })
-    })
-
-    app.get("/members/:username", function (req, res) {
-        db.User.findOne({
-            where: {
-                id: req.params.id,
-                username: req.body.username
-            }
-        }).then(function (dbUser) {
-            return res.json(dbUser)
+        }).then(function (user) {
+            return res.json(user)
         })
     })
 
@@ -94,4 +95,16 @@ module.exports = function (app) {
         res.json('/members')
     });
 
+
+    app.delete("/", function (req, res) {
+        db.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function () {
+                console.log("username has been succesfully deleted")
+                res.redirect('/')
+            });
+    })
 }
