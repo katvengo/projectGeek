@@ -36,7 +36,12 @@ module.exports = function (app) {
 
     app.get("/profile", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/profile.html"));
-    })
+    });
+
+    app.get('/forgot', function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/forgottenpassword.html"));
+    });
+    
     // app.get("/api/user_data", function (req, res) {
     //     if (!req.user) {
     //         // The user is not logged in, send back an empty object
