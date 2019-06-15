@@ -15,30 +15,6 @@ module.exports = function (app) {
         })
     })
 
-
-    // app.get("/api/members", function (req, res) {
-    //     db.User.findOne({
-    //         username: req.query.username,
-    //         email: req.body.email
-    //     }, function (err, user) {
-    //         var message;
-    //         if (err) {
-    //             console.log(err);
-    //         } else if (user) {
-    //             console.log(user)
-    //             message = "user exists";
-    //             console.log(message)
-    //         } else {
-    //             message = "success!"
-    //             console.log(message)
-    //             res.json({
-    //                 message: message
-    //             });
-    //         }
-
-    //     })
-    // })
-
     app.post("/api/signup", function (req, res) {
         console.log(req.body);
         db.User.create({
@@ -56,17 +32,6 @@ module.exports = function (app) {
             // res.status(409).json(err.errors[0].message);
         });
     });
-
-    // app.post("/profile", function (req, res) {
-    //     console.log(req.body);
-    //     db.User.findOne({
-    //         where: {
-    //             username: req.params.username
-    //         }
-    //     }).then(function (dbUser) {
-    //         return res.json(dbUser)
-    //     })
-    // })
 
 
     app.get("/api/members", function (req, res) {
@@ -202,7 +167,7 @@ module.exports = function (app) {
 
 
     app.delete("/", function (req, res) {
-        db.destroy({
+        db.User.destroy({
                 where: {
                     id: req.params.id
                 }
@@ -212,4 +177,12 @@ module.exports = function (app) {
                 res.redirect('/')
             });
     })
+
+    db.User.update("/", {
+        where:{
+            id: req.params.id
+        }
+    })
+    .then(function(db){
+    console.log(db);});
 }
