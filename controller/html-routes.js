@@ -61,8 +61,8 @@ module.exports = function (app) {
             where: {
                 username: req.params.username
             }
-        }).then(function (user) {
-            return res.render('profile', {user})
+        }).then(function (users) {
+            return res.render('profile', {users})
         })
     })
 

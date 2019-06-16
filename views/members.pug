@@ -20,9 +20,9 @@ nav.navbar.is-white.is-fixed-top.topNav
         span
     #topNav.navbar-end
       .navbar-start
-        a.navbar-item(href=`/`) Home
+        a.navbar-item(href=`members`) Home
         a.navbar-item(href='members') Fellow Geeks
-        a.navbar-item(href='/') Log Out
+        a.navbar-item(href='logout') Log Out
       .navbar-end
         .navbar-item
           .field.is-grouped
@@ -40,7 +40,7 @@ section.hero.is-success.is-fullheight
                 .media
                   .media-left.figure.profile-pic
                     img(src=`${user.profile}`, width='75', height='32')
-                    p #{user.username}
+                    p(href=`members/${userUrl}`) #{user.username}
                       .media-content
                       .interests-content
                         p #{user.email}

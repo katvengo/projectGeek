@@ -5,15 +5,15 @@ var async = require('async');
 var crypto = require('crypto');
 
 module.exports = function (app) {
-    app.get("/members/:username", function (req, res) {
-        db.User.findOne({
-            where: {
-                username: req.params.username
-            }
-        }).then(function (dbUser) {
-            return res.json(dbUser)
-        })
-    })
+    // app.get("/members/:username", function (req, res) {
+    //     db.User.findOne({
+    //         where: {
+    //             username: req.params.username
+    //         }
+    //     }).then(function (dbUser) {
+    //         return res.json(dbUser)
+    //     })
+    // })
 
     app.post("/api/signup", function (req, res) {
         console.log(req.body);
@@ -40,21 +40,19 @@ module.exports = function (app) {
         })
     })
 
-    app.get("/members/:username", function (req, res) {
-        var username = req.params.username
-
+    app.get("/api/members/:username", function (req, res) {
         db.User.findOne({
             where: {
                 username: req.params.username
             }
-        }).then(function (user) {
-            return res.json(user)
+        }).then(function (users) {
+            return res.json(users)
         })
     })
 
     app.get("/logout", function (req, res) {
         req.logout();
-        res.render("index");
+        res.render("/login");
     });
 
 

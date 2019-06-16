@@ -20,9 +20,9 @@ nav.navbar.is-white.is-fixed-top.topNav
         span
     #topNav.navbar-end
       .navbar-start
-        a.navbar-item(href=`/`) Home
-        a.navbar-item(href='../members') Fellow Geeks
-        a.navbar-item(href='/') Log Out
+        a.navbar-item(href=`/members`) Home
+        a.navbar-item(href='/members') Fellow Geeks
+        a.navbar-item(href='logout') Log Out
       .navbar-end
         .navbar-item
           .field.is-grouped
@@ -36,11 +36,11 @@ section.hero.is-success.is-fullheight
         .columns.is-vcentered
           .column.is-5
             figure.profile-pic
-              img(src=`${user.profile}`, width='200', height='200')
+              img(src=`${users.profile}`, width='200', height='200')
           .column.is-6.is-offset-1
-            h1#profile-title.title.is-2 #{user.username}
+            h1#profile-title.title.is-2 #{users.username}
             h2#profile-subtitle.subtitle.is-4
               | Interests: Marvel, Comic Books, Movies
             br
-            h5 #{user.email}
+            h5 Email: #{users.email}
     .column

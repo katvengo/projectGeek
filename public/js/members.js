@@ -1,23 +1,23 @@
-$(document).ready(function(){
+
+
+$(document).ready(function () {
     console.log('in members.js')
     $.ajax({
         type: "GET",
         url: "/api/members"
-    }).done(function(res) {
+    }).done(function (res) {
         console.log(res)
     })
 
     $.ajax({
         type: "GET",
         url: "/api/members/:username"
-    }).done(function(res) {
-        console.log(res)
-    })
-
-    $.ajax({
-        type: "GET",
-        url: "/api/members/:username"
-    }).done(function(res) {
+    }).done(function (res) {
         console.log(res)
     })
 })
+
+var url = '#{users.username}'
+
+
+var userURL = '#{user.username}'
