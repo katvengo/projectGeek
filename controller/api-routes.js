@@ -166,23 +166,23 @@ module.exports = function (app) {
     });
 
 
-    app.delete("/", function (req, res) {
-        db.User.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function () {
-                console.log("username has been succesfully deleted")
-                res.redirect('/')
-            });
-    })
+    // app.delete("/", function (req, res) {
+    //     db.User.destroy({
+    //             where: {
+    //                 id: req.params.id
+    //             }
+    //         })
+    //         .then(function () {
+    //             console.log("username has been succesfully deleted")
+    //             res.redirect('/')
+    //         });
+    // })
 
-    db.User.update("/", {
-        where:{
-            id: req.params.id
-        }
-    })
-    .then(function(db){
-    console.log(db);});
+    // db.User.update("/", {
+    //     where:{
+    //         id: req.params.id
+    //     }
+    // })
+    // .then(function(db){
+    // console.log(db);});
 }
