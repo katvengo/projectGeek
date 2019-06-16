@@ -4,43 +4,49 @@ head
   meta(http-equiv='X-UA-Compatible', content='IE=edge')
   title CongreGeek
   meta(name='viewport', content='width=device-width, initial-scale=1')
-  link(rel='stylesheet', type='text/css', media='screen', href='/css')
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css')
-  link(href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap', rel='stylesheet')
-  script(src='https://code.jquery.com/jquery.js')
-  script(src="/js/members.js")
-nav.navbar.is-white.is-fixed-top.topNav
-  .container
+  script(defer='', src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
+  link(rel='stylesheet', type='text/css', media='screen', href='/css')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap')
+  // <script src="members.js"></script>
+  nav.navbar(role='navigation', aria-label='main navigation')
     .navbar-brand
-      a.navbar-item(href=`/`)
+      a.navbar-item(href='/')
         img(src='../images/congregeeklogo.png', width='100', height='20')
-      .navbar-burger.burger(data-target='topNav')
-        span
-        span
-        span
-    #topNav.navbar-end
-      .navbar-start
-        a.navbar-item(href=`members`) Home
-        a.navbar-item(href='members') Fellow Geeks
-        a.navbar-item(href='logout') Log Out
-      .navbar-end
-        .navbar-item
-          .field.is-grouped
-            p.control
+      a.navbar-burger.burger(role='button', aria-label='menu', aria-expanded='false', data-target='navbarBasicExample')
+        span(aria-hidden='true')
+        span(aria-hidden='true')
+        span(aria-hidden='true')
+    #navbarBasicExample.navbar-menu
+    .navbar-end
+      .navbar-item
+        .buttons
+          .navbar-start
+            a.navbar-item(href='members')
+              | Home
+            a.navbar-item(href='members')
+              | Fellow Geeks
+            a.navbar-item(href='logout')
+              | Logout
 section.hero.is-success.is-fullheight
-  br
-  .container.is-fluid
-    .columns.is-multiline.is-mobile
-      each user in users
-        .column.is-one-quarter
-          br
-          br
-          .box.content
-            article.post
-                .media
-                  .media-left.figure.profile-pic
-                    img(src=`${user.profile}`, width='75', height='32')
-                    p(href=`members/${userUrl}`) #{user.username}
-                      .media-content
-                      .interests-content
-                        p #{user.email}
+  .hero-body
+    .container.is-fluid
+      .columns.is-centered.is-multiline.is-mobile
+        .column.is-full.is-space
+        each user in users
+          .card.cardSpecify
+            .card-header-title
+              h1.memberTitle #{user.username}
+            .card-content
+              .media
+                .media-left.figure.profile-pic
+                  img(src=`${user.profile}`, width='75', height='32')
+                .media-right
+                  p.subtitleBlack Interests:
+                  p.subtitleBlack
+              .content.emailTitle
+                p.subtitleBlack Email:
+                p.subtitleBlack #{user.email}
+
+
+
