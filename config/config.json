@@ -19,9 +19,9 @@
   "production": {
     "username": "oqoujmki17emlwem",
     "password": "toragv1xoqatdeaz",
-    "database": "geeks",
+    "database": "n8wuc5faaz24p5m4",
     "host": "u0zbt18wwjva9e0v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
-    "dialect": "n8wuc5faaz24p5m4"
+    "dialect": "mysql"
   }
 }
