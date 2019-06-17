@@ -1,7 +1,40 @@
+body {
+    margin: 0 auto;
+    padding: 0 auto;
 
+}
 
 .hero {
-    background: black url('/images/splashpage.jpg') center/ cover;
+    background-image: url('/images/splashpage.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.card-header-title {
+    padding-left: 65px;
+    padding-right: 30px;
+}
+
+.cardSpecify {
+    border-radius: 25px;
+    margin: 20px !important;
+}
+
+.memberTitle {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-family: 'Bangers', cursive;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    font-size: 25px;
+}
+
+.emailTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .title {
@@ -11,6 +44,11 @@
 
 .subtitle {
     font-family: 'Jura', sans-serif;
+}
+
+.subtitleBlack {
+    font-family: 'Jura', sans-serif;
+    color: black;
 }
 
 .input {
@@ -38,7 +76,7 @@
     font-family: 'Bangers', cursive;
     color: black;
     font-size: 40px;
-}    
+}
 
 #profile-title {
     font-family: 'Bangers', cursive;

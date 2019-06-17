@@ -17,10 +17,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "geeks",
-    "host": "127.0.0.1",
+    "username": "oqoujmki17emlwem",
+    "password": "toragv1xoqatdeaz",
+    "database": "n8wuc5faaz24p5m4",
+    "host": "u0zbt18wwjva9e0v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
   }

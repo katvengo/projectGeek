@@ -72,14 +72,16 @@ $(document).ready(function () {
             }).then(function (response) {
                 if (response.username === userData.username || response.email === userData.email) {
                     alert('User already exists in system please log in')
-                    
+
                 } else {
-                    signUpUser()
+                    // signUpUser()
+                    signUser()
+
                 }
             })
         }
-        doesUserExist()
 
+        doesUserExist()
         signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile);
         nameInput.val("");
         userNameInput.val("");
@@ -88,9 +90,9 @@ $(document).ready(function () {
         ageInput.val("");
         profileInput.val("");
 
+        console.log(userData)
         alert('Success!')
-
-
+        return res.redirect('profile')
     });
 
 

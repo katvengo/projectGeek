@@ -5,37 +5,13 @@ var async = require('async');
 var crypto = require('crypto');
 
 module.exports = function (app) {
-    app.get("/members/:username", function (req, res) {
-        db.User.findOne({
-            where: {
-                username: req.params.username
-            }
-        }).then(function (dbUser) {
-            return res.json(dbUser)
-        })
-    })
-
-
-    // app.get("/api/members", function (req, res) {
+    // app.get("/members/:username", function (req, res) {
     //     db.User.findOne({
-    //         username: req.query.username,
-    //         email: req.body.email
-    //     }, function (err, user) {
-    //         var message;
-    //         if (err) {
-    //             console.log(err);
-    //         } else if (user) {
-    //             console.log(user)
-    //             message = "user exists";
-    //             console.log(message)
-    //         } else {
-    //             message = "success!"
-    //             console.log(message)
-    //             res.json({
-    //                 message: message
-    //             });
+    //         where: {
+    //             username: req.params.username
     //         }
-
+    //     }).then(function (dbUser) {
+    //         return res.json(dbUser)
     //     })
     // })
 
@@ -57,17 +33,6 @@ module.exports = function (app) {
         });
     });
 
-    // app.post("/profile", function (req, res) {
-    //     console.log(req.body);
-    //     db.User.findOne({
-    //         where: {
-    //             username: req.params.username
-    //         }
-    //     }).then(function (dbUser) {
-    //         return res.json(dbUser)
-    //     })
-    // })
-
 
     app.get("/api/members", function (req, res) {
         db.User.findAll().then(function (dbUsers) {
@@ -75,21 +40,19 @@ module.exports = function (app) {
         })
     })
 
-    app.get("/members/:username", function (req, res) {
-        var username = req.params.username
-
+    app.get("/api/members/:username", function (req, res) {
         db.User.findOne({
             where: {
                 username: req.params.username
             }
-        }).then(function (user) {
-            return res.json(user)
+        }).then(function (users) {
+            return res.json(users)
         })
     })
 
     app.get("/logout", function (req, res) {
         req.logout();
-        res.redirect("index");
+        res.render("/login");
     });
 
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
@@ -227,15 +190,23 @@ module.exports = function (app) {
     });
 
 
-    app.delete("/", function (req, res) {
-        db.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function () {
-                console.log("username has been succesfully deleted")
-                res.redirect('/')
-            });
-    })
+    // app.delete("/", function (req, res) {
+    //     db.User.destroy({
+    //             where: {
+    //                 id: req.params.id
+    //             }
+    //         })
+    //         .then(function () {
+    //             console.log("username has been succesfully deleted")
+    //             res.redirect('/')
+    //         });
+    // })
+
+    // db.User.update("/", {
+    //     where:{
+    //         id: req.params.id
+    //     }
+    // })
+    // .then(function(db){
+    // console.log(db);});
 }

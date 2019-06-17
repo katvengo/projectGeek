@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    var emailInput = $("input#email-input");
-    var passwordInput = $("input#password-input");
+    var emailInput = $("#email-input");
+    var passwordInput = $("#password-input");
 
     $('#submit').on("click", function (event) {
         event.preventDefault();
