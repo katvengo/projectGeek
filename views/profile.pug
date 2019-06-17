@@ -36,7 +36,7 @@ section.hero.is-success.is-fullheight
         .columns.is-vcentered
           .column.is-5
             figure.profile-pic
-            img(src=`${users.profile}`.width = '200', height = '200')
+            img(src=`${users.profile}`, width='200', height='200')
           .column.is-6.is-offset-1
             h1#profile-title.title.is-2 #{users.username}
             h2#profile-subtitle.subtitle.is-4
@@ -48,5 +48,5 @@ section.hero.is-success.is-fullheight
               |Favorite Movie #{users.favemovie}
             h4#profile-subtitle.subtitle.is-4
               |Fantasy World you'd live in #{users.faveworld}
-            h5 Email: #{users.email}
+            
     .column
