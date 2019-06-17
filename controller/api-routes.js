@@ -58,7 +58,7 @@ module.exports = function (app) {
     })
 
     app.get("/api/members/:username", function (req, res, next) {
-
+        var user = req.user
         db.User.findOne({
             where: {
                 username: user.username
