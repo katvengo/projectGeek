@@ -65,7 +65,6 @@ module.exports = function (app) {
         res.render("/login");
     });
 
-
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
         res.json('/members')
     });
@@ -74,35 +73,42 @@ module.exports = function (app) {
     // Post route for forget password 
     // ------------------------------
 
-    app.post('/forgot', function (req, res, next) {
+    app.post('/api/forgot', function (req, res, next) {
         // Here we are using async module to avoid nesting callbacks within callbacks within callbacks.
         async.waterfall([
             // Generates a unique token for password reset
             function (done) {
+                console.log('generating hash');
+                
                 crypto.randomBytes(20, function (err, buf) {
                     var token = buf.toString('hex');
                     done(err, token);
                 });
             },
             function (token, done) {
-                db.User.findOne({
-                    email: req.body.email
-                }, function (err, user) {
-                    if (!user) {
-                        alert('No account with that email address exists.');
+                console.log('getting user from db');
+                db.User.update({
+                    // If email exists in db, we assign the token to the user
+                    resetPasswordToken : token,
+                    // Password reset link expires in an hour
+                    resetPasswordExpires : Date.now() + 3600000
+                }, {where: { email: req.body.email }}).then(function (rowsChanged) {
+                    // if no rows were changed, return an error, redirect
+                    if (!rowsChanged[0]) {
+                        // create an error and return to done
+                        const err = new Error('unable to locate user in db')
+                        done(err)
+                        // alert('No account with that email address exists.');
                         return res.redirect('/forgot');
                     }
-                    // If email exists in db, we assign the token to the user
-                    user.resetPasswordToken = token;
-                    // Password reset link expires in an hour
-                    user.resetPasswordExpires = Date.now() + 3600000;
 
-                    user.save(function (err) {
-                        done(err, token, user);
-                    });
+                    console.log('update user')
+                    done(null, token, {email: req.body.email})
                 });
             },
             function (token, user, done) {
+                console.log('sending email');
+                
                 const smtpTransport = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
@@ -125,14 +131,16 @@ module.exports = function (app) {
                 });
             }
         ], function (err) {
+            console.error('error object', err)
             if (err) return next(err);
             res.redirect('/forgot');
         });
     });
 
-    app.post('/reset/:token', function (req, res) {
+    app.post('api/reset/:token', function (req, res) {
         async.waterfall([
             function (done) {
+<<<<<<< HEAD
                 User.findOne({
                     resetPasswordToken: req.params.token,
                     resetPasswordExpires: {
@@ -154,6 +162,41 @@ module.exports = function (app) {
                         });
                     });
                 });
+=======
+                // db.User.findOne({
+                //     // const Op = Sequelize.Op;
+                //     where: {
+                //         resetPasswordToken: req.params.token, 
+                //         // resetPasswordExpires: { [Op.gte]: Date.now() }
+                //     }
+                // }).then(function (user) {
+                //             console.log('found user')
+                //             if (!user) {
+                //                 console.log('Password reset token is invalid or has expired.');
+                //                 return res.redirect('back');
+                //             }
+                            console.log('getting user from db')
+                            db.User.update({
+
+                                password : req.body.password,
+                                resetPasswordToken : undefined,
+                                resetPasswordExpires : undefined
+
+                            }, { where: { resetPasswordToken: req.params.token } })
+                            .then(function (rowsChanged) {
+                                // if no rows were changed, return an error, redirect
+                                if (!rowsChanged[0]) {
+                                    // create an error and return to done
+                                    const err = new Error('unable to update user in db, contact website admin')
+                                    done(err)
+                                    // alert('No account with that email address exists.');
+                                    return res.redirect('/forgot');
+                                }    
+                                console.log('updated user')
+                                done(null, token, {email: req.body.email}) 
+                            });
+                        // })
+>>>>>>> ad5885afb1af49bc094c07b34fb737abd0780c81
             },
             function (user, done) {
                 var smtpTransport = nodemailer.createTransport('SMTP', {

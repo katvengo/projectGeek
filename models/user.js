@@ -50,6 +50,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
         },
 
+        resetPasswordToken: {
+            type: DataTypes.STRING
+        },
+
+        resetPasswordExpires: {
+            type: DataTypes.DATE
+        }
+
 
     });
 
