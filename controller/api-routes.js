@@ -11,18 +11,21 @@ module.exports = function (app) {
         // var username = req.user.username
         var fandom = req.body.faveFandoms
         console.log("User Info" + " " + user)
-        console.log("Favorite fandoms" + " "+ fandom)
-        db.User.update(
-            {fandom: fandom}, 
-            {where: {id: user}
+        console.log("Favorite fandoms" + " " + fandom)
+        db.User.update({
+            fandom: fandom
+        }, {
+            where: {
+                id: user
+            }
         }).then(function (data) {
             res.json(data)
-        }).catch(function(err){
+        }).catch(function (err) {
             console.log(err)
             res.json(err)
         })
     })
-        // loop over each array, db.User.interests:creating inside of a loop for fandom and interests 
+    // loop over each array, db.User.interests:creating inside of a loop for fandom and interests 
 
     app.post("/api/signup", function (req, res) {
         console.log(req.body);
@@ -54,10 +57,11 @@ module.exports = function (app) {
         })
     })
 
-    app.get("/api/members/:username", function (req, res) {
+    app.get("/api/members/:username", function (req, res, next) {
+
         db.User.findOne({
             where: {
-                username: req.params.username
+                username: user.username
             }
         }).then(function (users) {
             return res.json(users)
@@ -83,7 +87,7 @@ module.exports = function (app) {
             // Generates a unique token for password reset
             function (done) {
                 console.log('generating hash');
-                
+
                 crypto.randomBytes(20, function (err, buf) {
                     var token = buf.toString('hex');
                     done(err, token);
@@ -93,10 +97,14 @@ module.exports = function (app) {
                 console.log('getting user from db');
                 db.User.update({
                     // If email exists in db, we assign the token to the user
-                    resetPasswordToken : token,
+                    resetPasswordToken: token,
                     // Password reset link expires in an hour
-                    resetPasswordExpires : Date.now() + 3600000
-                }, {where: { email: req.body.email }}).then(function (rowsChanged) {
+                    resetPasswordExpires: Date.now() + 3600000
+                }, {
+                    where: {
+                        email: req.body.email
+                    }
+                }).then(function (rowsChanged) {
                     // if no rows were changed, return an error, redirect
                     if (!rowsChanged[0]) {
                         // create an error and return to done
@@ -107,12 +115,14 @@ module.exports = function (app) {
                     }
 
                     console.log('update user')
-                    done(null, token, {email: req.body.email})
+                    done(null, token, {
+                        email: req.body.email
+                    })
                 });
             },
             function (token, user, done) {
                 console.log('sending email');
-                
+
                 const smtpTransport = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
@@ -156,27 +166,33 @@ module.exports = function (app) {
                 //                 console.log('Password reset token is invalid or has expired.');
                 //                 return res.redirect('back');
                 //             }
-                            console.log('getting user from db')
-                            db.User.update({
+                console.log('getting user from db')
+                db.User.update({
 
-                                password : req.body.password,
-                                resetPasswordToken : undefined,
-                                resetPasswordExpires : undefined
+                        password: req.body.password,
+                        resetPasswordToken: undefined,
+                        resetPasswordExpires: undefined
 
-                            }, { where: { resetPasswordToken: req.params.token } })
-                            .then(function (rowsChanged) {
-                                // if no rows were changed, return an error, redirect
-                                if (!rowsChanged[0]) {
-                                    // create an error and return to done
-                                    const err = new Error('unable to update user in db, contact website admin')
-                                    done(err)
-                                    // alert('No account with that email address exists.');
-                                    return res.redirect('/forgot');
-                                }    
-                                console.log('updated user')
-                                done(null, token, {email: req.body.email}) 
-                            });
-                        // })
+                    }, {
+                        where: {
+                            resetPasswordToken: req.params.token
+                        }
+                    })
+                    .then(function (rowsChanged) {
+                        // if no rows were changed, return an error, redirect
+                        if (!rowsChanged[0]) {
+                            // create an error and return to done
+                            const err = new Error('unable to update user in db, contact website admin')
+                            done(err)
+                            // alert('No account with that email address exists.');
+                            return res.redirect('/forgot');
+                        }
+                        console.log('updated user')
+                        done(null, token, {
+                            email: req.body.email
+                        })
+                    });
+                // })
             },
             function (user, done) {
                 var smtpTransport = nodemailer.createTransport('SMTP', {

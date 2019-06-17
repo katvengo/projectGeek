@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    // Getting references to our form and input
+    $('.geekModal').hide()
+
     var nameInput = $("input#name-input");
     var userNameInput = $("input#username-input");
     var emailInput = $("input#email-input");
@@ -33,9 +34,10 @@ $(document).ready(function () {
         if (emptyFields === "") {
             alert("Please fill out all fields")
         }
+
     }
 
-    function signUpUser(name, username, email, password, age, profile, favehero, favemovie, faveworld) {
+    function signUpUser(name, username, email, password, age, profile, favehero, favemovie, faveworld,interests,fandom) {
         $.post("/api/signup", {
                 name: name,
                 username: username,
@@ -45,7 +47,9 @@ $(document).ready(function () {
                 profile: profile,
                 favehero: favehero,
                 favemovie: favemovie,
-                faveworld: faveworld
+                faveworld: faveworld,
+                interests: interests,
+                fandom: fandom
             })
             .then(function () {
                 window.location.replace(data);
@@ -60,9 +64,102 @@ $(document).ready(function () {
         $("#alert .msg").text(err.responseJSON);
         $("#alert").fadeIn(500);
     }
+    var faveInterests;
+    var faveFandoms;
 
+    $('#nextSubmit').on('click', function() {
+        $('.geekModal').show()
+        event.preventDefault()
+        var harryPotterChecked = $("#harryP").prop("checked");
+        var marvelChecked = $("#marvel").prop("checked");
+        var dcChecked = $("#dc").prop("checked");
+        var doctorWhoChecked = $("#doctorWho").prop("checked");
+        var gameOfThronesChecked = $("#gOt").prop("checked");
+        var supernaturalChecked = $("#supernatural").prop("checked");
+        var disneyChecked = $("#disney").prop("checked");
+        var starWChecked = $("#starW").prop("checked");
+        var animeChecked = $("#anime").prop("checked");
+
+
+        var comicBooksChecked = $("#comicBooks").prop("checked");
+        var intMoviesChecked = $("#intMovies").prop("checked");
+        var musicChecked = $("#music").prop("checked");
+        var artChecked = $("#art").prop("checked");
+        var videoGamesChecked = $("#videogames").prop("checked");
+
+        var harryPotter = $("#harryP").attr("value");
+        var marvel = $("#marvel").attr("value");
+        var dc = $("#dc").attr("value");
+        var doctorWho = $("#doctorWho").attr("value");
+        var gameOfThrones = $("#gOt").attr("value");
+        var supernatural = $("#supernatural").attr("value");
+        var disney = $("#disney").attr("value");
+        var starW = $("#starW").attr("value");
+        var anime = $("#anime").attr("value");
+
+        var fandom = []
+
+        var comicBooksValue = $("#comicBooks").prop("value");
+        var intMoviesValue = $("#intMovies").prop("value");
+        var musicValue = $("#music").prop("value");
+        var artValue = $("#art").prop("value");
+        var videoGamesValue = $("#videogames").prop("value");
+
+        var interests = []
+
+        if (comicBooksChecked) {
+            interests.push(comicBooksValue)
+        }
+        if (intMoviesChecked) {
+            interests.push(intMoviesValue)
+        }
+        if (musicChecked) {
+            interests.push(musicValue)
+        }
+        if (artChecked) {
+            interests.push(artValue)
+        }
+        if (videoGamesChecked) {
+            interests.push(videoGamesValue)
+        }
+
+        if (harryPotterChecked) {
+            fandom.push(harryPotter)
+        }
+        if (marvelChecked) {
+            fandom.push(marvel)
+        }
+        if (dcChecked) {
+            fandom.push(dc)
+        }
+        if (doctorWhoChecked) {
+            fandom.push(doctorWho)
+        }
+        if (gameOfThronesChecked) {
+            fandom.push(gameOfThrones)
+        }
+        if (supernaturalChecked) {
+            fandom.push(supernatural)
+        }
+        if (disneyChecked) {
+            fandom.push(disney)
+        }
+        if (starWChecked) {
+            fandom.push(starW)
+        }
+        if (animeChecked) {
+            fandom.push(anime)
+        }
+        faveInterests = interests.toString()
+        faveFandoms = fandom.toString()
+        
+        $('#submit').on("click", function () {
+        
+            createUser()
+        })
+    })
     // When the signup button is clicked, we validate the email and password are not blank
-    $('#submit').on("click", function (event) {
+    function createUser(){
         event.preventDefault();
         var userData = {
             name: nameInput.val().trim(),
@@ -73,7 +170,9 @@ $(document).ready(function () {
             profile: profileInput.val().trim(),
             favehero: heroInput.val().trim(),
             favemovie: movieInput.val().trim(),
-            faveworld: worldInput.val().trim()
+            faveworld: worldInput.val().trim(),
+            fandom: faveFandoms,
+            interests: faveInterests
         };
         if (!userData.email || !userData.password) {
             alert("Please fill in all the required forms")
@@ -97,7 +196,7 @@ $(document).ready(function () {
         }
 
         doesUserExist()
-        signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile, userData.favehero, userData.favemovie, userData.faveworld);
+        signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile, userData.favehero, userData.favemovie, userData.faveworld, userData.fandom, userData.interests);
         nameInput.val("");
         userNameInput.val("");
         emailInput.val("");
@@ -107,11 +206,10 @@ $(document).ready(function () {
         heroInput.val("");
         movieInput.val("");
         worldInput.val("");
+        faveFandoms;
+        faveInterests;
 
         console.log(userData)
         alert('Success!')
-
-    });
-
-
+    }
 })

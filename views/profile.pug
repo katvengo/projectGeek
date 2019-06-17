@@ -4,49 +4,63 @@ head
   meta(http-equiv='X-UA-Compatible', content='IE=edge')
   title CongreGeek
   meta(name='viewport', content='width=device-width, initial-scale=1')
-  link(rel='stylesheet', type='text/css', media='screen', href='/css')
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css')
-  link(href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap', rel='stylesheet')
+  script(defer='', src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
+  link(rel='stylesheet', type='text/css', media='screen', href='/css')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap')
   script(src='https://code.jquery.com/jquery.js')
-  script(src="/js/members.js")
-nav.navbar.is-white.is-fixed-top.topNav
-  .container
+  script(src="./js/members.js")
+  nav.navbar(role='navigation', aria-label='main navigation')
     .navbar-brand
-      a.navbar-item(href=`/`)
+      a.navbar-item(href='/')
         img(src='../images/congregeeklogo.png', width='100', height='20')
-      .navbar-burger.burger(data-target='topNav')
-        span
-        span
-        span
-    #topNav.navbar-end
-      .navbar-start
-        a.navbar-item(href=`/members`) Home
-        a.navbar-item(href='/members') Fellow Geeks
-        a.navbar-item(href='logout') Log Out
-      .navbar-end
-        .navbar-item
-          .field.is-grouped
-            p.control
+      a.navbar-burger.burger(role='button', aria-label='menu', aria-expanded='false', data-target='navbarBasicExample')
+        span(aria-hidden='true')
+        span(aria-hidden='true')
+        span(aria-hidden='true')
+    #navbarBasicExample.navbar-menu
+    .navbar-end
+      .navbar-item
+        .buttons
+          .navbar-start
+            a.navbar-item(href='members')
+              | Home
+            a.navbar-item(href='members')
+              | Fellow Geeks
+            a.navbar-item(href='logout')
+              | Logout
 section.hero.is-success.is-fullheight
-  br
   .hero-body
-    .column
-    .box
-      .container.has-text-centered
-        .columns.is-vcentered
-          .column.is-5
-            figure.profile-pic
-            img(src=`${users.profile}`, width='200', height='200')
-          .column.is-6.is-offset-1
-            h1#profile-title.title.is-2 #{users.username}
-            h2#profile-subtitle.subtitle.is-4
-              | Interests: #{users.interests}
-            br
-            h4#profile-subtitle.subtitle.is-4
-              |Favorite Superhero #{users.favehero}
-            h4#profile-subtitle.subtitle.is-4
-              |Favorite Movie #{users.favemovie}
-            h4#profile-subtitle.subtitle.is-4
-              |Fantasy World you'd live in #{users.faveworld}
-            
+    .container.is-fluid
+      .columns.is-centered.is-multiline.is-mobile
+        .column
+          .card.cardSpecify
+            .card-header
+              .card-header-title.profileTitle #{users.username}
+            .card-content
+              .media
+                .media-left.figure.profile-pic
+                  img(src=`${users.profile}`, width='200', height='200')
+                .media-right
+                  h4#profile-subtitle.subtitle.is-4
+                    |Interests: 
+                    br
+                    div.subtitleBlack #{users.interests}
+                  h4#profile-subtitle.subtitle.is-4
+                    |Fandoms: 
+                    br
+                    div.subtitleBlack #{users.fandoms}
+                  h4#profile-subtitle.subtitle.is-4
+                    |Favorite Superhero:
+                    br
+                    div.subtitleBlack #{users.favehero}
+                  h4#profile-subtitle.subtitle.is-4
+                    |Favorite Movie:
+                    br
+                    div.subtitleBlack #{users.favemovie}
+                  h4#profile-subtitle.subtitle.is-4
+                    |Fantasy World you'd live in: 
+                    br
+                    div.subtitleBlack #{users.faveworld}
+
     .column

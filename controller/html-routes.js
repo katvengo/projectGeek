@@ -26,9 +26,9 @@ module.exports = function (app) {
 
     app.get('/reset/:token', function (req, res) {
         // const Op = Sequelize.Op;
-        db.User.findOne({ 
+        db.User.findOne({
             where: {
-                resetPasswordToken: req.params.token, 
+                resetPasswordToken: req.params.token,
                 // resetPasswordExpires: { [Op.gte]: Date.now() }
             }
         }).then(function (user) {
@@ -38,7 +38,7 @@ module.exports = function (app) {
             res.render('password-reset');
         });
     });
-    
+
     app.get("/login", function (req, res) {
         // If the user already has an account send them to the members page
         if (req.user) {
@@ -63,7 +63,9 @@ module.exports = function (app) {
                 username: req.params.username
             }
         }).then(function (users) {
-            return res.render('profile', {users})
+            res.render('profile', {
+                users
+            })
         })
     });
 
@@ -85,5 +87,3 @@ module.exports = function (app) {
         }
     });
 }
-
-

@@ -8,7 +8,8 @@ head
   script(defer='', src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
   link(rel='stylesheet', type='text/css', media='screen', href='/css')
   link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap')
-  // <script src="members.js"></script>
+  script(src='https://code.jquery.com/jquery.js')
+  script(src="./js/members.js")
   nav.navbar(role='navigation', aria-label='main navigation')
     .navbar-brand
       a.navbar-item(href='/')
@@ -36,7 +37,7 @@ section.hero.is-success.is-fullheight
         each user in users
           .card.cardSpecify
             .card-header-title
-              h1.memberTitle #{user.username}
+              a.h1.memberTitle.memberLink(href=`members/${user.username}`) #{user.username}
             .card-content
               .media
                 .media-left.figure.profile-pic

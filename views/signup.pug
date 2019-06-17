@@ -50,10 +50,84 @@ html
                 .field
                   .control
                     input#world-input.input.is-small(type='form-control', placeholder='Narnia, midgar,spira,', autofocus='')
-                button#submit.button.is-block.is-info.is-medium.is-fullwidth(type='submit', onclick="window.location.href = 'members';") Sign up!
+                button#nextSubmit.button.is-block.is-info.is-medium.is-fullwidth Continue
           p#login.has-text-white
             button.button.is-info.is-medium(onclick="window.location.href = 'interests';")  Log In
             |       
-    #usernameResponseHidden
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='./js/signup.js')
+.geekModal
+  .myContent
+    p#cardHeaderh1.card-header-title
+      | Answer additional questions to continue!
+    .columns.is-mobile
+      .column.is-half
+        .field
+          label.checkbox
+            input#harryP(type='checkbox' value= "Harry Potter")
+            |                                 Harry Potter
+        .field
+          label.checkbox
+            input#marvel(type='checkbox' value="Marvel")
+            |                                 Marvel
+        .field
+          label.checkbox
+            input#dc(type='checkbox' value="DC")
+            |                                 DC
+        .field
+          label.checkbox
+            input#doctorWho(type='checkbox' value="Doctor Who")
+            |                                 Doctor Who
+        .field
+          label.checkbox
+            input#gOt(type='checkbox' value="Game Of Thrones")
+            |                                 Game of Thrones
+      .column.is-half
+        .field
+          label.checkbox
+            input#supernatural(type='checkbox'  value="Supernatural")
+            |                                 Supernatural
+        .field
+          label.checkbox
+            input#disney(type='checkbox' value="Disney")
+            |                                 Disney
+        .field
+          label.checkbox
+            input#sherlock(type='checkbox' value="Sherlock")
+            |                                 Sherlock
+        .field
+          label.checkbox
+            input#starW(type='checkbox' value="Star Wars")
+            |                                 Star Wars
+        .field
+          label.checkbox
+            input#anime(type='checkbox' value="Anime")
+            |                                 Anime
+    .column
+      .box
+        p#interests-title.bd-notification.is-danger.has-text-centered Pick Your Interests!
+        .columns.is-mobile
+          .column.is-centered
+            .field
+              label.checkbox
+                input#comicBooks(type='checkbox' value="Comic Books")
+                |                                 Comic Books
+            .field
+              label.checkbox
+                input#intMovies(type='checkbox' value="Movies")
+                |                                 Movies
+            .field
+              label.checkbox
+                input#music(type='checkbox' value="Music")
+                |                                 Music
+            .field
+              label.checkbox
+                input#art(type='checkbox' value="Art")
+                |                                 Art
+            .field
+              label.checkbox
+                input#videogames(type='checkbox' value="Video Games")
+                |                                 Video Games
+    .closeButton
+      button.button.is-large.is-light.close#submit(href='/members') Create your Profile
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+script(src='./js/signup.js')
