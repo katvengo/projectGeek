@@ -40,7 +40,13 @@ section.hero.is-success.is-fullheight
           .column.is-6.is-offset-1
             h1#profile-title.title.is-2 #{users.username}
             h2#profile-subtitle.subtitle.is-4
-              | Interests: Marvel, Comic Books, Movies
+              | Interests: #{users.interests}
             br
+            h4#profile-subtitle.subtitle.is-4
+              |Favorite Superhero #{users.favehero}
+            h4#profile-subtitle.subtitle.is-4
+              |Favorite Movie #{users.favemovie}
+            h4#profile-subtitle.subtitle.is-4
+              |Fantasy World you'd live in #{users.faveworld}
             h5 Email: #{users.email}
     .column

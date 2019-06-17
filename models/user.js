@@ -49,6 +49,9 @@ module.exports = function (sequelize, DataTypes) {
         favemovie: {
             type: DataTypes.STRING,
         },
+        favemworld: {
+            type: DataTypes.STRING,
+        },
 
         resetPasswordToken: {
             type: DataTypes.STRING

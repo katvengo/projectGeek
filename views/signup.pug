@@ -38,9 +38,21 @@ html
                 .field
                   .control
                     input#profile-input.input.is-small(type='form-control', placeholder='Your Photo/Avatar', autofocus='')
-                button#submit.button.is-block.is-info.is-medium.is-fullwidth(type='submit', onclick="window.location.href = 'interests';") Sign up!
-          p#login.has-text-grey
-            a(href='login') Log In
+              h4.subtitleBlack Who is your Favorite Hero/Superhero?
+                .field
+                  .control
+                    input#superhero-input.input.is-small(type='form-control', placeholder='Superman, Batman, Spiderman', autofocus='')
+              h4.subtitleBlack What is your favorite Movie?
+                .field
+                  .control
+                    input#movie-input.input.is-small(type='form-control', placeholder='Favorite Movie', autofocus='')
+              h4.subtitleBlack If you could live in any fantasy world, what would it be?
+                .field
+                  .control
+                    input#world-input.input.is-small(type='form-control', placeholder='Narnia, midgar,spira,', autofocus='')
+                button#submit.button.is-block.is-info.is-medium.is-fullwidth(type='submit', onclick="window.location.href = 'members';") Sign up!
+          p#login.has-text-white
+            button.button.is-info.is-medium(onclick="window.location.href = 'login';")  Log In
             |       
     #usernameResponseHidden
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')

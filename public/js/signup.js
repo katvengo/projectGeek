@@ -6,6 +6,9 @@ $(document).ready(function () {
     var passwordInput = $("input#password-input");
     var ageInput = $("input#age-input");
     var profileInput = $("input#profile-input");
+    var heroInput = $("input#hero-input");
+    var movieInput = $("input#movie-input");
+    var worldInput = $("input#world-input");
 
     function validateUserData() {
         var name = document.getElementById("name-input").value
@@ -13,27 +16,36 @@ $(document).ready(function () {
         var email = document.getElementById("email-input").value
         var password = document.getElementById("password-input").value
         var age = document.getElementById("age-input").value
+        var hero = document.getElementById("hero-input").value
+        var movie = document.getElementById("movie-input").value
+        var world = document.getElementById("world-input").value
 
         let emptyFields = {
             name,
             username,
             email,
             password,
-            age
+            age,
+            hero,
+            movie,
+            world
         }
         if (emptyFields === "") {
             alert("Please fill out all fields")
         }
     }
 
-    function signUpUser(name, username, email, password, age, profile) {
+    function signUpUser(name, username, email, password, age, profile, favehero, favemovie, faveworld) {
         $.post("/api/signup", {
                 name: name,
                 username: username,
                 email: email,
                 password: password,
                 age: age,
-                profile: profile
+                profile: profile,
+                favehero: favehero,
+                favemovie: favemovie,
+                faveworld: faveworld
             })
             .then(function () {
                 window.location.replace(data);
@@ -58,7 +70,10 @@ $(document).ready(function () {
             email: emailInput.val().trim(),
             password: passwordInput.val().trim(),
             age: ageInput.val().trim(),
-            profile: profileInput.val().trim()
+            profile: profileInput.val().trim(),
+            favehero: heroInput.val().trim(),
+            favemovie: movieInput.val().trim(),
+            faveworld: worldInput.val().trim()
         };
         if (!userData.email || !userData.password) {
             alert("Please fill in all the required forms")
@@ -82,13 +97,16 @@ $(document).ready(function () {
         }
 
         doesUserExist()
-        signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile);
+        signUpUser(userData.name, userData.userName, userData.email, userData.password, userData.age, userData.profile, userData.favehero, userData.favemovie, userData.faveworld);
         nameInput.val("");
         userNameInput.val("");
         emailInput.val("");
         passwordInput.val("");
         ageInput.val("");
         profileInput.val("");
+        heroInput.val("");
+        movieInput.val("");
+        worldInput.val("");
 
         console.log(userData)
         alert('Success!')
