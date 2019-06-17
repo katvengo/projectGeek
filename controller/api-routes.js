@@ -6,14 +6,15 @@ var crypto = require('crypto');
 
 module.exports = function (app) {
     app.put("/api/interests", function (req, res) {
-        var id = req.body.id
+        console.log(req.body)
+        var user = req.body.username
         // var username = req.user.username
         var fandom = req.body.faveFandoms
-        console.log("request" + id)
-        console.log("fandoms" + fandom)
+        console.log("User Info" + " " + user)
+        console.log("Favorite fandoms" + " "+ fandom)
         db.User.update(
-            {fandom: req.body.faveFandoms}, 
-            {where: {id: req.body.id}
+            {fandom: fandom}, 
+            {where: {id: user}
         }).then(function (data) {
             res.json(data)
         }).catch(function(err){
@@ -140,29 +141,6 @@ module.exports = function (app) {
     app.post('api/reset/:token', function (req, res) {
         async.waterfall([
             function (done) {
-<<<<<<< HEAD
-                User.findOne({
-                    resetPasswordToken: req.params.token,
-                    resetPasswordExpires: {
-                        $gt: Date.now()
-                    }
-                }, function (err, user) {
-                    if (!user) {
-                        alert('Password reset token is invalid or has expired.');
-                        return res.redirect('back');
-                    }
-
-                    user.password = req.body.password;
-                    user.resetPasswordToken = undefined;
-                    user.resetPasswordExpires = undefined;
-
-                    user.save(function (err) {
-                        req.logIn(user, function (err) {
-                            done(err, user);
-                        });
-                    });
-                });
-=======
                 // db.User.findOne({
                 //     // const Op = Sequelize.Op;
                 //     where: {
@@ -196,7 +174,6 @@ module.exports = function (app) {
                                 done(null, token, {email: req.body.email}) 
                             });
                         // })
->>>>>>> ad5885afb1af49bc094c07b34fb737abd0780c81
             },
             function (user, done) {
                 var smtpTransport = nodemailer.createTransport('SMTP', {

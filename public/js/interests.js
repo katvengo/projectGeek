@@ -79,7 +79,7 @@ $(document).ready(function () {
         if (starWChecked) {
             fandom.push(starW)
         }
-        if (anime) {
+        if (animeChecked) {
             fandom.push(anime)
         }
     
