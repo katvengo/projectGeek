@@ -40,6 +40,16 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
         },
 
+        fandom: {
+            type: DataTypes.STRING,
+        },
+        favehero: {
+            type: DataTypes.STRING,
+        },
+        favemovie: {
+            type: DataTypes.STRING,
+        },
+
 
     });
 

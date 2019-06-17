@@ -9,7 +9,8 @@ html
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css')
     script(defer='', src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
     link(href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap', rel='stylesheet')
-    script(src='/main.js')
+    script(src='https://code.jquery.com/jquery.js')
+    script(src='./js/interests.js')
   body
     section.hero.is-success.is-fullheight
       br
@@ -21,44 +22,44 @@ html
               .column
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="harryP" value="Harry Potter")
                     |                                 Harry Potter
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="marvel" value="Marvel")
                     |                                 Marvel
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="dc" value="DC")
                     |                                 DC
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="doctorWho" value="Doctor Who")
                     |                                 Doctor Who
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="gOt" value="Game Of Thrones")
                     |                                 Game of Thrones
               .column
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="supernatural" value="Supernatural")
                     |                                 Supernatural
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="disney" value="Disney")
                     |                                 Disney
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="sherlock" value="Sherlock")
                     |                                 Sherlock
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="starW" value="Star Wars")
                     |                                 Star Wars
                 .field
                   label.checkbox
-                    input(type='checkbox')
+                    input(type='checkbox' id="anime" value="Anime")
                     |                                 Anime
         .column
           .box
@@ -87,4 +88,4 @@ html
                     |                                 Other
       .section.is-fluid
         .buttons.is-centered
-          a.button.is-info.is-large.is-focused(href='members') Create your profile!
+          a.button.is-info.is-large.is-focused#submit Create your profile!

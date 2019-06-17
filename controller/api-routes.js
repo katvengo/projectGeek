@@ -5,15 +5,23 @@ var async = require('async');
 var crypto = require('crypto');
 
 module.exports = function (app) {
-    // app.get("/members/:username", function (req, res) {
-    //     db.User.findOne({
-    //         where: {
-    //             username: req.params.username
-    //         }
-    //     }).then(function (dbUser) {
-    //         return res.json(dbUser)
-    //     })
-    // })
+    app.put("/api/interests", function (req, res) {
+        var id = req.body.id
+        // var username = req.user.username
+        var fandom = req.body.faveFandoms
+        console.log("request" + id)
+        console.log("fandoms" + fandom)
+        db.User.update(
+            {fandom: req.body.faveFandoms}, 
+            {where: {id: req.body.id}
+        }).then(function (data) {
+            res.json(data)
+        }).catch(function(err){
+            console.log(err)
+            res.json(err)
+        })
+    })
+        // loop over each array, db.User.interests:creating inside of a loop for fandom and interests 
 
     app.post("/api/signup", function (req, res) {
         console.log(req.body);
@@ -33,6 +41,8 @@ module.exports = function (app) {
         });
     });
 
+    //Creating new something
+
 
     app.get("/api/members", function (req, res) {
         db.User.findAll().then(function (dbUsers) {
@@ -47,7 +57,7 @@ module.exports = function (app) {
             }
         }).then(function (users) {
             return res.json(users)
-        })
+        }).catch(next)
     })
 
     app.get("/logout", function (req, res) {
@@ -75,7 +85,9 @@ module.exports = function (app) {
                 });
             },
             function (token, done) {
-                db.User.findOne({ email: req.body.email }, function (err, user) {
+                db.User.findOne({
+                    email: req.body.email
+                }, function (err, user) {
                     if (!user) {
                         alert('No account with that email address exists.');
                         return res.redirect('/forgot');
@@ -121,7 +133,12 @@ module.exports = function (app) {
     app.post('/reset/:token', function (req, res) {
         async.waterfall([
             function (done) {
-                User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
+                User.findOne({
+                    resetPasswordToken: req.params.token,
+                    resetPasswordExpires: {
+                        $gt: Date.now()
+                    }
+                }, function (err, user) {
                     if (!user) {
                         alert('Password reset token is invalid or has expired.');
                         return res.redirect('back');

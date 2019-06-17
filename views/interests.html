@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer="" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bangers|Jura&amp;display=swap" rel="stylesheet">
-    <script src="/main.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="./js/interests.js"></script>
   </head>
   <body>
     <section class="hero is-success is-fullheight"><br>
@@ -21,54 +22,54 @@
               <div class="column">
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Harry Potter
+                    <input type="checkbox" id="harryP" value="Harry Potter">                                Harry Potter
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Marvel
+                    <input type="checkbox" id="marvel" value="Marvel">                                Marvel
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                DC
+                    <input type="checkbox" id="dc" value="DC">                                DC
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Doctor Who
+                    <input type="checkbox" id="doctorWho" value="Doctor Who">                                Doctor Who
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Game of Thrones
+                    <input type="checkbox" id="gOt" value="Game Of Thrones">                                Game of Thrones
                   </label>
                 </div>
               </div>
               <div class="column">
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Supernatural
+                    <input type="checkbox" id="supernatural" value="Supernatural">                                Supernatural
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Disney
+                    <input type="checkbox" id="disney" value="Disney">                                Disney
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Sherlock
+                    <input type="checkbox" id="sherlock" value="Sherlock">                                Sherlock
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Star Wars
+                    <input type="checkbox" id="starW" value="Star Wars">                                Star Wars
                   </label>
                 </div>
                 <div class="field">
                   <label class="checkbox">
-                    <input type="checkbox">                                Anime
+                    <input type="checkbox" id="anime" value="Anime">                                Anime
                   </label>
                 </div>
               </div>
@@ -111,7 +112,7 @@
         </div>
       </div>
       <div class="section is-fluid">
-        <div class="buttons is-centered"><a class="button is-info is-large is-focused" href="members">Create your profile!</a></div>
+        <div class="buttons is-centered"><a class="button is-info is-large is-focused" id="submit">Create your profile!</a></div>
       </div>
     </section>
   </body>
