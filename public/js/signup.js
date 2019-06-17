@@ -153,8 +153,10 @@ $(document).ready(function () {
         faveInterests = interests.toString()
         faveFandoms = fandom.toString()
         
+        console.log(interests)
+
         $('#submit').on("click", function () {
-        
+            
             createUser()
         })
     })

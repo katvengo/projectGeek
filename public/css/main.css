@@ -142,9 +142,10 @@ color: blue;
     top: 50%;
     left: 50%;
     /* width: 70%; */
-    overflow: auto !important;
+    overflow: scroll !important;
     transform: translate(-50%, -50%);
     background-color: rgb(241, 237, 238);
+    height: 500px;
 }
 
 .myContent{

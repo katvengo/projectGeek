@@ -50,16 +50,140 @@
                     <input class="input is-small" id="profile-input" type="form-control" placeholder="Your Photo/Avatar" autofocus="">
                   </div>
                 </div>
-                <button class="button is-block is-info is-medium is-fullwidth" id="submit" type="submit" onclick="window.location.href = 'interests';">Sign up!</button>
               </form>
+              <h4 class="subtitleBlack">Who is your Favorite Hero/Superhero?
+                <div class="field">
+                  <div class="control">
+                    <input class="input is-small" id="hero-input" type="form-control" placeholder="Superman, Batman, Spiderman" autofocus="">
+                  </div>
+                </div>
+              </h4>
+              <h4 class="subtitleBlack">What is your favorite Movie?
+                <div class="field">
+                  <div class="control">
+                    <input class="input is-small" id="movie-input" type="form-control" placeholder="Favorite Movie" autofocus="">
+                  </div>
+                </div>
+              </h4>
+              <h4 class="subtitleBlack">If you could live in any fantasy world, what would it be?
+                <div class="field">
+                  <div class="control">
+                    <input class="input is-small" id="world-input" type="form-control" placeholder="Narnia, midgar,spira," autofocus="">
+                  </div>
+                </div>
+                <button class="button is-block is-info is-medium is-fullwidth" id="nextSubmit">Continue</button>
+              </h4>
             </div>
           </div>
-          <p class="has-text-grey" id="login"><a href="/login">Log In</a>      </p>
+          <p class="has-text-white" id="login">
+            <button class="button is-info is-medium" onclick="window.location.href = 'interests';"> Log In</button>      
+          </p>
         </div>
       </div>
     </section>
-    <div id="usernameResponseHidden"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./js/signup.js"></script>
   </body>
 </html>
+<div class="geekModal">
+  <div class="myContent">
+    <p class="card-header-title" id="cardHeaderh1">Answer additional questions to continue!</p>
+    <div class="column">
+      <div class="box">
+        <p class="bd-notification is-danger has-text-centered" id="interests-title">Pick Your Fandom!</p>
+        <div class="columns is-mobile">
+          <div class="column is-centered is-half"></div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="harryP" type="checkbox" value="Harry Potter">                                Harry Potter
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="marvel" type="checkbox" value="Marvel">                                Marvel
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="dc" type="checkbox" value="DC">                                DC
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="doctorWho" type="checkbox" value="Doctor Who">                                Doctor Who
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="gOt" type="checkbox" value="Game Of Thrones">                                Game of Thrones
+            </label>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="field">
+            <label class="checkbox">
+              <input id="supernatural" type="checkbox" value="Supernatural">                                Supernatural
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="disney" type="checkbox" value="Disney">                                Disney
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="sherlock" type="checkbox" value="Sherlock">                                Sherlock
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="starW" type="checkbox" value="Star Wars">                                Star Wars
+            </label>
+          </div>
+          <div class="field">
+            <label class="checkbox">
+              <input id="anime" type="checkbox" value="Anime">                                Anime
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box">
+        <p class="bd-notification is-danger has-text-centered" id="interests-title">Pick Your Interests!</p>
+        <div class="columns is-mobile">
+          <div class="column is-centered is-half">
+            <div class="field">
+              <label class="checkbox">
+                <input id="comicBooks" type="checkbox" value="Comic Books">                                Comic Books
+              </label>
+            </div>
+            <div class="field">
+              <label class="checkbox">
+                <input id="intMovies" type="checkbox" value="Movies">                                Movies
+              </label>
+            </div>
+            <div class="field">
+              <label class="checkbox">
+                <input id="music" type="checkbox" value="Music">                                Music
+              </label>
+            </div>
+            <div class="field">
+              <label class="checkbox">
+                <input id="art" type="checkbox" value="Art">                                Art
+              </label>
+            </div>
+            <div class="field">
+              <label class="checkbox">
+                <input id="videogames" type="checkbox" value="Video Games">                                Video Games
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="closeButton">
+      <button class="button is-large is-light close" id="submit" href="members">Create your Profile</button>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/signup.js"></script>
