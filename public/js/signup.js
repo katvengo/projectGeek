@@ -16,9 +16,9 @@ $(document).ready(function () {
         var email = document.getElementById("email-input").value
         var password = document.getElementById("password-input").value
         var age = document.getElementById("age-input").value
-        var hero = document.getElementById("hero-input").value
-        var movie = document.getElementById("movie-input").value
-        var world = document.getElementById("world-input").value
+        var favehero = document.getElementById("hero-input").value
+        var favemovie = document.getElementById("movie-input").value
+        var faveworld = document.getElementById("world-input").value
 
         let emptyFields = {
             name,
@@ -26,9 +26,9 @@ $(document).ready(function () {
             email,
             password,
             age,
-            hero,
-            movie,
-            world
+            favehero,
+            favemovie,
+            faveworld
         }
         if (emptyFields === "") {
             alert("Please fill out all fields")

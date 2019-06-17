@@ -32,7 +32,10 @@ module.exports = function (app) {
             email: req.body.email,
             password: req.body.password,
             age: req.body.age,
-            profile: req.body.profile
+            profile: req.body.profile,
+            favehero: req.body.favehero,
+            favemovie: req.body.favemovie,
+            faveworld: req.body.faveworld
         }).then(function () {
             res.redirect(307, "/api/login");
         }).catch(function (err) {
