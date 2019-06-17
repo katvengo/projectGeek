@@ -110,7 +110,7 @@ $(document).ready(function () {
 
         console.log(userData)
         alert('Success!')
-        return res.redirect('profile')
+
     });
 
 

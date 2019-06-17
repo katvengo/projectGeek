@@ -66,7 +66,7 @@ module.exports = function (app) {
 
     app.get("/logout", function (req, res) {
         req.logout();
-        res.render("/login");
+        res.render("login");
     });
 
     app.post("/api/login", passport.authenticate("local"), function (req, res) {

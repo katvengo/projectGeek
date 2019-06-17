@@ -17,7 +17,10 @@ $(document).ready(function () {
     })
 })
 
+var photo = '#{users.profile}'
 var url = '#{users.username}'
 
 
 var userURL = '#{user.username}'
+
+image = (src=`${photo}`. width ='200', height ='200')

@@ -2,9 +2,6 @@ var path = require('path');
 var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-// import Sequelize from 'sequelize';
-// import hierarchy from 'sequelize-hierarchy';
-
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
