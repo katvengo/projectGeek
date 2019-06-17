@@ -12,6 +12,15 @@ $(document).ready(function () {
         var starWChecked = $("#starW").prop("checked");
         var animeChecked = $("#anime").prop("checked");
 
+
+        var comicBooksChecked = $("#comicBooks").prop("checked");
+        var intMoviesChecked = $("#intMovies").prop("checked");
+        var musicChecked = $("#music").prop("checked");
+        var artChecked = $("#art").prop("checked");
+        var videoGamesChecked = $("#videogames").prop("checked");
+        
+
+
         // var checkbox = [
         //     harryPotterChecked,
         //     marvelChecked,
@@ -48,6 +57,30 @@ $(document).ready(function () {
 
         var fandom = []
 
+        var comicBooksValue = $("#comicBooks").prop("value");
+        var intMoviesValue = $("#intMovies").prop("value");
+        var musicValue = $("#music").prop("value");
+        var artValue = $("#art").prop("value");
+        var videoGamesValue = $("#videogames").prop("value");
+        
+        var interests = []
+
+        if(comicBooksChecked){
+            interests.push(comicBooksValue)
+        }
+        if(intMoviesChecked){
+            interests.push(intMoviesValue)
+        }
+        if(musicChecked){
+            interests.push(musicValue)
+        }
+        if(artChecked){
+            interests.push(artValue)
+        }
+        if(videoGamesChecked){
+            interests.push(videoGamesValue)
+        }
+
         // for (let i = 0; i < checkbox.length; i++) {
         //     if(checkbox[i]){
         //         fandom.push()
@@ -82,15 +115,16 @@ $(document).ready(function () {
         if (animeChecked) {
             fandom.push(anime)
         }
-
+        var faveInterests = interests.toString()
         var faveFandoms = fandom.toString()
         console.log(faveFandoms)
+        console.log(faveInterests)
 
         $.ajax({
             type: "PUT",
-            data: {
-                faveFandoms
-            },
+            // data: {
+            //     faveFandoms
+            // },
             url: "/api/interests",
 
         }).done(function (res) {

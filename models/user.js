@@ -49,7 +49,7 @@ module.exports = function (sequelize, DataTypes) {
         favemovie: {
             type: DataTypes.STRING,
         },
-        favemworld: {
+        faveworld: {
             type: DataTypes.STRING,
         },
 
