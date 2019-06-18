@@ -3,6 +3,7 @@ var passport = require("../config/passport");
 var nodemailer = require('nodemailer');
 var async = require('async');
 var crypto = require('crypto');
+var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (app) {
     // app.put("/api/signup", function (req, res) {
@@ -68,13 +69,8 @@ module.exports = function (app) {
         }).catch(next)
     })
 
-    app.get("/logout", function (req, res) {
-        req.logout();
-        res.render("login");
-    });
-
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
-        res.json('/members')
+        res.json('/members');
     });
 
     // ------------------------------
@@ -140,7 +136,6 @@ module.exports = function (app) {
                         'If you did not request this, please ignore this email and your password will remain unchanged.\n'
                 };
                 smtpTransport.sendMail(mailOptions, function (err) {
-                    alert('An e-mail has been sent to ' + user.email + ' with further instructions.');
                     done(err, 'done');
                 });
             }
@@ -151,7 +146,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post('api/reset/:token', function (req, res) {
+    app.post('/api/reset', function (req, res) {
         async.waterfall([
             function (done) {
                 // db.User.findOne({
@@ -167,15 +162,20 @@ module.exports = function (app) {
                 //                 return res.redirect('back');
                 //             }
                 console.log('getting user from db')
+                console.log(req.body)
+                
+                let encryptedPassword = bcrypt.hashSync(req.body.newPassword, bcrypt.genSaltSync(10), null);
+                console.log(encryptedPassword);
+
                 db.User.update({
 
-                        password: req.body.password,
+                        password: encryptedPassword,
                         resetPasswordToken: undefined,
                         resetPasswordExpires: undefined
 
                     }, {
                         where: {
-                            resetPasswordToken: req.params.token
+                            resetPasswordToken: req.body.token
                         }
                     })
                     .then(function (rowsChanged) {
@@ -184,18 +184,15 @@ module.exports = function (app) {
                             // create an error and return to done
                             const err = new Error('unable to update user in db, contact website admin')
                             done(err)
-                            // alert('No account with that email address exists.');
                             return res.redirect('/forgot');
                         }
                         console.log('updated user')
-                        done(null, token, {
-                            email: req.body.email
-                        })
+                        done(null, req.body.email)
                     });
                 // })
             },
-            function (user, done) {
-                var smtpTransport = nodemailer.createTransport('SMTP', {
+            function (email, done) {
+                var smtpTransport = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
                         user: 'mikenodemailer@gmail.com',
@@ -203,19 +200,20 @@ module.exports = function (app) {
                     }
                 });
                 var mailOptions = {
-                    to: user.email,
+                    to: email,
                     from: 'mikenodemailer@gmail.com',
                     subject: 'Your Congregeek password has been changed',
                     text: 'Hello,\n\n' +
-                        'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+                        'This is a confirmation that the password for your account ' + email + ' has just been changed.\n'
                 };
                 smtpTransport.sendMail(mailOptions, function (err) {
-                    alert('Success! Your password has been changed.');
-                    done(err);
+                    done(err) 
                 });
             }
         ], function (err) {
-            res.redirect('/');
+            console.error('error object', err)
+            if (err) return next(err);
+            res.redirect('/index');
         });
     });
 

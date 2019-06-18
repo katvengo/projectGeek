@@ -8,12 +8,12 @@ module.exports = function (app) {
         res.render('index')
     });
 
-    app.get('/signup', function (req, res) {
-        res.render('signup')
+    app.get('/index', function (req, res) {
+        res.render('index')
     });
 
-    app.get('/logout', function (req, res) {
-        res.render('logout')
+    app.get('/signup', function (req, res) {
+        res.render('signup')
     });
 
     app.get('/css', function (req, res) {
@@ -24,8 +24,14 @@ module.exports = function (app) {
         res.render("password-forgot");
     });
 
+    app.get("/logout", function (req, res) {
+        req.logout();
+        res.render("index");
+    });
+
     app.get('/reset/:token', function (req, res) {
         // const Op = Sequelize.Op;
+        console.log('/reset/' + req.params.token);
         db.User.findOne({
             where: {
                 resetPasswordToken: req.params.token,
@@ -33,9 +39,13 @@ module.exports = function (app) {
             }
         }).then(function (user) {
             if (!user) {
+                console.log('user token not found');
                 return res.redirect('/forgot');
             }
-            res.render('password-reset');
+            let token = user.resetPasswordToken
+            let email = user.email
+            console.log('user token found');
+            res.render('password-reset', {token, email});
         });
     });
 
