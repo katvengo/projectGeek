@@ -5,5 +5,6 @@ $(document).on('click', '#forget-submit', function(e) {
 
     $.post("/api/forgot", {email}).then(function(response) {
         console.log(response)
+        alert('An e-mail has been sent to ' + email + ' with further instructions.');
     })
 })
