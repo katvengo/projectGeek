@@ -10,7 +10,7 @@ var flash = require('connect-flash');
 
 var db = require('./models');
 
-var PORT = process.env.PORT || 8080
+var PORT = process.env.PORT || 8081
 
 var app = express();
 
@@ -39,7 +39,7 @@ require('./controller/html-routes.js')(app);
 require('./controller/api-routes.js')(app);
 
 
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: false}).then(function() {
 app.listen(PORT, function () {
 console.log(`'Server listening at http://localhost' ${PORT}`)
 })
