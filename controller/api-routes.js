@@ -5,25 +5,25 @@ var async = require('async');
 var crypto = require('crypto');
 
 module.exports = function (app) {
-    app.put("/api/signup", function (req, res) {
-        console.log(req.body)
-        var user = req.body.username
-        var fandom = req.body.faveFandoms
-        console.log("User Info" + " " + user)
-        console.log("Favorite fandoms" + " " + fandom)
-        db.User.update({
-            fandom: fandom
-        }, {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (data) {
-            res.json(data)
-        }).catch(function (err) {
-            console.log(err)
-            res.json(err)
-        })
-    })
+    // app.put("/api/signup", function (req, res) {
+    //     console.log(req.body)
+    //     var user = req.body.username
+    //     var fandom = req.body.faveFandoms
+    //     console.log("User Info" + " " + user)
+    //     console.log("Favorite fandoms" + " " + fandom)
+    //     db.User.update({
+    //         fandom: fandom
+    //     }, {
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //     }).then(function (data) {
+    //         res.json(data)
+    //     }).catch(function (err) {
+    //         console.log(err)
+    //         res.json(err)
+    //     })
+    // })
     // loop over each array, db.User.interests:creating inside of a loop for fandom and interests 
 
     app.post("/api/signup", function (req, res) {
@@ -35,9 +35,13 @@ module.exports = function (app) {
             password: req.body.password,
             age: req.body.age,
             profile: req.body.profile,
+            fandom: req.body.fandom,
+            interests: req.body.interests,
             favehero: req.body.favehero,
             favemovie: req.body.favemovie,
-            faveworld: req.body.faveworld
+            faveworld: req.body.faveworld,
+            favetv: req.body.favetv,
+            superpower: req.body.superpower
         }).then(function () {
             res.redirect(307, "/api/login");
         }).catch(function (err) {
@@ -47,9 +51,6 @@ module.exports = function (app) {
         });
     });
 
-    //Creating new something
-
-
     app.get("/api/members", function (req, res) {
         db.User.findAll().then(function (dbUsers) {
             return res.json(dbUsers)
@@ -57,10 +58,10 @@ module.exports = function (app) {
     })
 
     app.get("/api/members/:username", function (req, res, next) {
-        var user = req.user
+        // var user = req.user
         db.User.findOne({
             where: {
-                username: user.username
+                username: req.user.username
             }
         }).then(function (users) {
             return res.json(users)

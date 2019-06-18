@@ -68,8 +68,9 @@ module.exports = function (app) {
             })
         })
     });
-
+//This is to find if a user already exists in the database
     app.get("/members/:username", isAuthenticated, function (req, res) {
+        var chosen = req.params.username
         db.User.findOne({
             where: {
                 username: req.params.username

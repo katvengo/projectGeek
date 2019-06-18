@@ -1,5 +1,5 @@
-var faveFandoms;
-var faveInterests;
+// var faveFandoms;
+// var faveInterests;
 
 function validateUserData() {
     var name = $("#name-input").value
@@ -27,7 +27,7 @@ function validateUserData() {
 
 }
 
-function signUpUser(name, username, email, password, age, profile, interests, fandom, favehero, favemovie, faveworld) {
+function signUpUser(name, username, email, password, age, profile, interests, fandom, favehero, favemovie, faveworld, favetv, superpower) {
     $.post("/api/signup", {
             name: name,
             username: username,
@@ -40,6 +40,8 @@ function signUpUser(name, username, email, password, age, profile, interests, fa
             favehero: favehero,
             favemovie: favemovie,
             faveworld: faveworld,
+            favetv: favetv,
+            superpower: superpower
 
         })
         .then(function () {
@@ -56,24 +58,6 @@ function handleLoginErr(err) {
     $("#alert").fadeIn(500);
 }
 
-
-$(document).ready(function () {
-    $('.geekModal').hide()
-
-    $('#nextSubmit').on('click', function () {
-        $('.geekModal').show()
-    })
-
-    $('#submit').on("click", function (event) {
-        $('.geekModal').hide()
-
-        event.preventDefault()
-        createUser()
-        window.location.href = "members";
-
-    })
-})
-
 function createUser() {
     var nameInput = $("#name-input");
     var userNameInput = $("#username-input");
@@ -88,7 +72,7 @@ function createUser() {
     var fandomInput = $('#fandom-input')
     var tvInput = $('#tv-input')
     var superInput = $('#superpower-input')
-    
+
 
     var userData = {
         name: nameInput.val().trim(),
@@ -140,8 +124,23 @@ function createUser() {
     tvInput.val("");
     superInput.val("");
 
-   
+    console.log(userData)
+    alert('User created successfully! Please log in')
 }
 
+$(document).ready(function () {
+    $('.geekModal').hide()
 
- 
+    $('#nextSubmit').on('click', function () {
+        $('.geekModal').show()
+    })
+
+    $('#submit').on("click", function (event) {
+        event.preventDefault()
+        createUser()
+        $('.geekModal').hide()
+        var url = "members";    
+        $(location).attr('href',url);
+    })
+})
+

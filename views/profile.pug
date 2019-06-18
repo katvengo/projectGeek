@@ -22,7 +22,7 @@ head
       .navbar-item
         .buttons
           .navbar-start
-            a.navbar-item(href='members')
+            a.navbar-item(href='/members')
               | Home
             a.navbar-item(href='members')
               | Fellow Geeks
@@ -32,43 +32,34 @@ section.hero.is-success.is-fullheight
   .hero-body
     .container.is-fluid
       .columns.is-centered.is-multiline.is-mobile
-        .column
+        .column.is-full
           .card.cardSpecify
             .card-header
-              .card-header-title.profileTitle #{users.username}
+              .card-header-title.is-centered.profileTitle #{users.username}
             .card-content
               .media
                 .media-left.figure.profile-pic
                   img(src=`${users.profile}`, width='200', height='200')
                 .media-right
-                  h4#profile-subtitle.subtitle.is-4
-                    |Interests: 
-                    br
+                  h6#profile-subtitle.subtitle.is-4
+                    |Interests:
                     div.subtitleBlack #{users.interests}
-                  h4#profile-subtitle.subtitle.is-4
-                    |Fandoms: 
-                    br
+                  h6#profile-subtitle.subtitle.is-4
+                    |Fandoms:
                     div.subtitleBlack #{users.fandom}
-                  h4#profile-subtitle.subtitle.is-4
+                  h6#profile-subtitle.subtitle.is-4
                     |Favorite Superhero:
-                    br
                     div.subtitleBlack #{users.favehero}
-                  h4#profile-subtitle.subtitle.is-4
+                  h6#profile-subtitle.subtitle.is-4
                     |Favorite Movie:
-                    br
                     div.subtitleBlack #{users.favemovie}
-                  h4#profile-subtitle.subtitle.is-4
+                  h6#profile-subtitle.subtitle.is-4
                     |Favorite TV Show
-                    br
                     div.subtitleBlack #{users.favetv}
-                  h4#profile-subtitle.subtitle.is-4
+                  h6#profile-subtitle.subtitle.is-4
                     |Fantasy World you'd live in: 
-                    br
                     div.subtitleBlack #{users.faveworld}
-                  h4#profile-subtitle.subtitle.is-4
+                  h6#profile-subtitle.subtitle.is-4
                     |Superpower I would be: 
-                    br
                     div.subtitleBlack #{users.superpower}
-
-    .column
 script(src="../js/members.js")

@@ -48,7 +48,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         favemovie: {
             type: DataTypes.STRING,
-        }, 
+        },
         faveworld: {
             type: DataTypes.STRING,
         },
@@ -58,7 +58,6 @@ module.exports = function (sequelize, DataTypes) {
         superpower: {
             type: DataTypes.STRING,
         },
-       
 
         resetPasswordToken: {
             type: DataTypes.STRING

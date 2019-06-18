@@ -34,18 +34,19 @@ section.hero.is-success.is-fullheight
       .columns.is-centered.is-multiline.is-mobile
         .column.is-full.is-space
         each user in users
-          .card.cardSpecify
+          .card.cardSpecifyMember
             .card-header-title
-              a.h1.memberTitle.memberLink(href=`members/${user.username}`) #{user.username}
+              a.h1.memberTitle.is-centered.memberLink(href=`members/${user.username}`) #{user.username}
             .card-content
               .media
                 .media-left.figure.profile-pic
                   img(src=`${user.profile}`, width='75', height='32')
                 .media-right
-                  p.subtitleBlack Interests: #{user.interests}
-                  p.subtitleBlack Fandoms: #{user.fandom}
-              .content.emailTitle
-                p.subtitleBlack Favorite Superhero
-                p.subtitleBlack #{user.favehero}
+                  p.subtitleBlack Interests: 
+                  p.subtitleBlack #{user.interests}
+                  p.subtitleBlack Fandoms:
+                  p.subtitleBlack #{user.fandom}
+                  p.subtitleBlack Favorite Superhero
+                  p.subtitleBlack #{user.favehero}
 script(src="../js/members.js")
 
