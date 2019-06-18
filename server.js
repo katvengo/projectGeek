@@ -1,18 +1,18 @@
-let express = require('express')
-let path = require('path')
-let session = require("express-session");
+const express = require('express')
+const path = require('path')
+const session = require("express-session");
 
-let passport = require("./config/passport")
+const passport = require("./config/passport")
 
 LocalStrategy = require('passport-local').Strategy;
 
-let flash = require('connect-flash');
+const flash = require('connect-flash');
 
-let db = require('./models');
+const db = require('./models');
 
-let PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080
 
-let app = express();
+const app = express();
 
 app.set("view engine", "pug");
 
