@@ -10,7 +10,7 @@ var flash = require('connect-flash');
 
 var db = require('./models');
 
-var PORT = process.env.PORT || 8081
+var PORT = process.env.PORT || 8080
 
 var app = express();
 
