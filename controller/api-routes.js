@@ -5,10 +5,9 @@ var async = require('async');
 var crypto = require('crypto');
 
 module.exports = function (app) {
-    app.put("/api/interests", function (req, res) {
+    app.put("/api/signup", function (req, res) {
         console.log(req.body)
         var user = req.body.username
-        // var username = req.user.username
         var fandom = req.body.faveFandoms
         console.log("User Info" + " " + user)
         console.log("Favorite fandoms" + " " + fandom)
@@ -16,7 +15,7 @@ module.exports = function (app) {
             fandom: fandom
         }, {
             where: {
-                id: user
+                id: req.params.id
             }
         }).then(function (data) {
             res.json(data)

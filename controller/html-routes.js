@@ -69,6 +69,16 @@ module.exports = function (app) {
         })
     });
 
+    app.get("/members/:username", isAuthenticated, function (req, res) {
+        db.User.findOne({
+            where: {
+                username: req.params.username
+            }
+        }).then(function (dbUsers) {
+            res.json(dbUsers)
+        })
+    });
+
     app.get('/interests', function (req, res) {
         res.render('interests')
     });

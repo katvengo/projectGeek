@@ -9,7 +9,6 @@ head
   link(rel='stylesheet', type='text/css', media='screen', href='/css')
   link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap')
   script(src='https://code.jquery.com/jquery.js')
-  script(src="./js/members.js")
   nav.navbar(role='navigation', aria-label='main navigation')
     .navbar-brand
       a.navbar-item(href='/')
@@ -59,8 +58,17 @@ section.hero.is-success.is-fullheight
                     br
                     div.subtitleBlack #{users.favemovie}
                   h4#profile-subtitle.subtitle.is-4
+                    |Favorite TV Show
+                    br
+                    div.subtitleBlack #{users.favetv}
+                  h4#profile-subtitle.subtitle.is-4
                     |Fantasy World you'd live in: 
                     br
                     div.subtitleBlack #{users.faveworld}
+                  h4#profile-subtitle.subtitle.is-4
+                    |Superpower I would be: 
+                    br
+                    div.subtitleBlack #{users.superpower}
 
     .column
+script(src="../js/members.js")

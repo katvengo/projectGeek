@@ -9,7 +9,6 @@ head
   link(rel='stylesheet', type='text/css', media='screen', href='/css')
   link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Bangers|Jura&display=swap')
   script(src='https://code.jquery.com/jquery.js')
-  script(src="./js/members.js")
   nav.navbar(role='navigation', aria-label='main navigation')
     .navbar-brand
       a.navbar-item(href='/')
@@ -43,11 +42,10 @@ section.hero.is-success.is-fullheight
                 .media-left.figure.profile-pic
                   img(src=`${user.profile}`, width='75', height='32')
                 .media-right
-                  p.subtitleBlack Interests:
-                  p.subtitleBlack
+                  p.subtitleBlack Interests: #{user.interests}
+                  p.subtitleBlack Fandoms: #{user.fandom}
               .content.emailTitle
                 p.subtitleBlack Favorite Superhero
                 p.subtitleBlack #{user.favehero}
-
-
+script(src="../js/members.js")
 

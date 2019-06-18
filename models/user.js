@@ -48,10 +48,17 @@ module.exports = function (sequelize, DataTypes) {
         },
         favemovie: {
             type: DataTypes.STRING,
-        },
+        }, 
         faveworld: {
             type: DataTypes.STRING,
         },
+        favetv: {
+            type: DataTypes.STRING,
+        },
+        superpower: {
+            type: DataTypes.STRING,
+        },
+       
 
         resetPasswordToken: {
             type: DataTypes.STRING
@@ -60,8 +67,6 @@ module.exports = function (sequelize, DataTypes) {
         resetPasswordExpires: {
             type: DataTypes.DATE
         }
-
-
     });
 
     User.prototype.validPassword = function (password) {
