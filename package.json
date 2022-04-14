@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/katvengo/projectGeek#readme",
   "dependencies": {
-    "async": "^3.0.1",
+    "async": "^3.2.2",
     "async-waterfall": "^0.1.5",
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
